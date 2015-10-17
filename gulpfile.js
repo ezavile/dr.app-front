@@ -96,9 +96,9 @@ gulp.task('img',function(){
 //observar los cambios y cada cambio borra public
 gulp.task('watch', ['clean'], function(){
   livereload.listen()
-  gulp.watch('./dev/**/*.styl', ['styl']);
-  gulp.watch('./dev/**/*.jade', ['jade']);
-  gulp.watch('./dev/**/*.js', ['js']);
+  gulp.watch('./dev/**/**/*.styl', ['styl']);
+  gulp.watch('./dev/**/**/*.jade', ['jade']);
+  gulp.watch('./dev/**/**/*.js', ['js']);
   gulp.watch('./dev/_img/*', ['img']);
 })
 
