@@ -85,15 +85,24 @@ gulp.task('jade', function () {
   .pipe(livereload());
 });
 
+
+
+//Copiar img
+gulp.task('img',function(){
+  return gulp.src('./dev/_img/*')
+  .pipe(gulp.dest('./public/img'));
+});
+
 //observar los cambios y cada cambio borra public
 gulp.task('watch', ['clean'], function(){
   livereload.listen()
   gulp.watch('./dev/**/*.styl', ['styl']);
   gulp.watch('./dev/**/*.jade', ['jade']);
   gulp.watch('./dev/**/*.js', ['js']);
+  gulp.watch('./dev/_img/*', ['img']);
 })
 
 //efectuar tarea - gulp
 gulp.task('default', ['watch'], function(){
-	gulp.start('js-vendor','js', 'styl', 'jade','fonts');
+	gulp.start('js-vendor','js', 'styl', 'jade','fonts', 'img');
 })
