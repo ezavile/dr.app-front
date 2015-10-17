@@ -1,13 +1,72 @@
-@import 'nib';
-@import './lib/normalize';
+@import 'nib'
+@import './lib/normalize'
+@import './lib/angular-carousel.css'
 @import './fonts/fonts.css'
+@import './variables'
+@import './mixins'
+@import './popup'
+@import './perfil'
+
+//GENERALRES
 
 *
 	box-sizing: border-box;
 
 body
-	background: #EEE;
+	color: #16210b;
 	font-size: 16px;
-	color: #333;
+	background-image: url(../img/bg.png);
+	font-family: 'Open Sans';
 
-@import '../operacion/operacion';
+a
+a:active
+	text-decoration: none;
+	outline: none;
+	color: inherit;
+
+form
+	padding: 1em;
+	background: rgba(white, .9);
+	border-radius: 10px;
+	boxShadow();
+	text-align: center;
+	h3
+		color: $morado;
+
+
+input,
+select,
+textarea
+	padding: .3em;
+	border: 1px solid $azul;
+	background: white;
+	color: gray;
+textarea
+	height: 5em;
+button
+	background: $azul;
+	border: 0;
+	border-radius: 8px;
+	padding: .5em 1em;
+	color: white !important;
+	outline: none;
+button[type="cancel"]
+	background: $naranja;
+label.txtArea
+	vertical-align: top;
+
+.Contenedor
+	width: 80%;
+	max-width: 900px;
+	margin: 0 auto;
+	overflow: hidden;
+	background: white;
+	boxShadow();
+
+@import '../header/header'
+@import '../principal/principal'
+@import '../login/login'
+@import '../registro/registro'
+/*
+@import '../listado/listado'
+@import '../perfil_doc/perfil_doc'*/
