@@ -1,0 +1,17 @@
+{
+  "name": "dr.app",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ezavile/dr.app-front",
+  "authors": [
+    "Edgar Zavala <ezavile@gmail.com>"
+  ],
+  "description": "Brindar información a los usuarios de Saltillo sobre los diferentes servicios de doctores y/o médicos para poder agendar citas de manera rápida y efectiva",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.6",
+    "jquery": "~2.1.4",
+    "angular-ui-router": "~0.2.15",
+    "ngmap": "~1.13.7",
+    "angular-carousel": "~0.3.13"
+  }
+}

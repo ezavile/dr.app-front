@@ -1,0 +1,34 @@
+{
+  "name": "dr.app",
+  "version": "0.0.1",
+  "description": "Brindar información a los usuarios de Saltillo sobre los diferentes servicios de doctores y/o médicos para poder agendar citas de manera rápida y efectiva",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "http-server ./public -o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://www.github.com/ezavile/dr.app-front"
+  },
+  "author": "Edgar Zavala",
+  "devDependencies": {
+    "browserify": "^11.2.0",
+    "debowerify": "^1.3.1",
+    "gulp": "^3.9.0",
+    "gulp-cache": "^0.3.0",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-livereload": "^3.8.0",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-rimraf": "^0.1.1",
+    "gulp-stylus": "^2.0.7",
+    "gulp-uglify": "^1.4.1",
+    "http-server": "^0.8.0",
+    "jade": "^1.11.0",
+    "nib": "^1.1.0",
+    "stylus": "^0.52.4",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
