@@ -1,0 +1,47 @@
+.Registro
+	align-items: center;
+	&-op
+		figure
+			width: 10em;
+			height: 10em;
+			border-radius: 100%;
+			border: 4px solid $morado;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			color: transparent;
+			position: relative;
+			cursor: pointer;
+			&:hover
+				figcaption
+					height: 100%;
+					width: 100%;
+					border-radius: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-weight: bold;
+					background: rgba($morado, 0.8)
+					color: white;
+			&:first-child
+				margin-bottom: 3em;
+		&-doc
+			bgCover('../img/registro_doctor_bg.jpg');
+		&-usr
+			bgCover('../img/registro_usr_bg.jpg');
+	&-form
+		form
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			h3
+				margin: 0 0 1em;
+				width: 100%;
+			input, select, textarea
+				width: 12em;
+				margin-left: .5em;
+			div
+				margin-bottom: .5em;
+			button
+				margin-top: 1em;

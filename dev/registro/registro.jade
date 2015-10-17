@@ -1,0 +1,52 @@
+div(popup).Popup.Registro
+	section(class="Registro-op" ng-show="!registro")
+		figure(class="Registro-op-doc" ng-click="registro = 'doctor'")
+			figcaption ¿Eres doctor?
+		figure(class="Registro-op-usr" ng-click="registro = 'usr'")
+			figcaption ¿Estas en busca de un doctor?
+	section.Registro-form
+		form(ng-if="registro == 'doctor'")
+			h3 Registro de doctor
+			div
+				label Especialidad
+				select
+					option Valor 1
+					option Valor 2
+					option Valor 3
+			div
+				label Usuario
+				input(type="text")
+			div
+				label Nombre
+				input(type="text")
+			div
+				label Contraseña
+				input(type="text")
+			div
+				label Correo
+				input(type="text")
+			div
+				label.txtArea Dirección
+				textarea
+			div
+				label.txtArea Servicios
+				textarea
+			div
+				label Teléfono
+				input(type="text")
+			button(ng-click="addDoctor") Registrar
+		form(ng-if="registro == 'usr'")
+			h3 Registro de usuario
+			div
+				label Usuario
+				input(type="text")
+			div
+				label Nombre
+				input(type="text")
+			div
+				label Contraseña
+				input(type="text")
+			div
+				label Correo
+				input(type="text")
+			button(type="submit") Registrar
