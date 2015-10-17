@@ -1,9 +1,12 @@
 (function(){
 	//appTec - modulo principal (aplicacion)
 	//modulo de rutas - ui-router
-	angular.module('app', [
-		'ui.router',
-		'app.Operacion'
+	angular.module('drApp', [
+			'ui.router',
+			'drApp.Helpers',
+			'drApp.Header',
+			'drApp.Login',
+			'drApp.Registro'
 		]
 	)
 	.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider){ 
@@ -11,10 +14,9 @@
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
-			.state('operacion', {
+			.state('principal', {
 				url: '/',
-				templateUrl: './operacion/operacion.html',
-				controller: 'OperacionController'
+				templateUrl: './principal/principal.html'
 			})
 
 	}])

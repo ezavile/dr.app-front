@@ -1,2 +1,6 @@
 require('./app.module');
-require('./operacion/_operacion');
+require('./_helpers/_helpers');
+require('./header/_header');
+require('./principal/_principal');
+require('./login/_login');
+require('./registro/_registro');
