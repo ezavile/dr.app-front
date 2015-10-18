@@ -23,6 +23,18 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-settings:before {
+	content: "\e800";
+}
+.icon-phone:before {
+	content: "\e601";
+}
+.icon-comment:before {
+	content: "\e603";
+}
+.icon-bars:before {
+	content: "\e605";
+}
 .icon-back:before {
 	content: "\e604";
 }
@@ -32,9 +44,4 @@
 .icon-inbox:before {
 	content: "\e600";
 }
-.icon-phone:before {
-	content: "\e601";
-}
-.icon-comment:before {
-	content: "\e603";
-}
+
