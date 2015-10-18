@@ -14,7 +14,7 @@ section(class="PerfilDoctor")
 				li
 					i(class="icon-inbox")
 					span Escribir mensaje
-				li
+				li(popup-add="<comentarios-doc />")
 					i(class="icon-comment")
 					span Comentarios
 				li(ng-click="doctor.agendarCita()" popup-add="<agendar-cita />")
