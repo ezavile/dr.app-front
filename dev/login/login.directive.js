@@ -7,10 +7,7 @@
 		function login(){
 			return{
 				restrict: 'E',
-				templateUrl: './login/login.html',
-				link: function(){
-					
-				}
+				templateUrl: './login/login.html'
 			}
 		}
 

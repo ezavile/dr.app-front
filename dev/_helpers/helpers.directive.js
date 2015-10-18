@@ -2,9 +2,10 @@
 
 	angular
 		.module('drApp.Helpers')
-		.directive('popup', popup);
+		.directive('popupClose', popupClose)
+		.directive('popupAdd', popupAdd)
 
-		function popup(){
+		function popupClose(){
 			return{
 				restrict: 'A',
 				link: function(){
@@ -13,6 +14,19 @@
 						if(e.target != this) return;
 						$(this).remove();
 					});
+				}
+			}
+		}
+
+		popupAdd.$inject = ['$compile'];
+
+		function popupAdd($compile){
+			return{
+				restrict: 'A',
+				link: function(scope, elem, attrs) {
+					 elem.bind('click', function() {
+					 	$('body').append($compile(attrs.popupAdd)(scope));
+					 });
 				}
 			}
 		}

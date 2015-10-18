@@ -9,19 +9,7 @@ angular
 	function header($compile){
 		return{
 			restrict: 'A', 
-			templateUrl: './header/header.html',
-			link: function(scope){
-				//click inicio sesión -> popup
-				$('.InicioSesion').click(function(){
-					$('body').append($compile("<login/>")(scope));
-					scope.$apply();
-				});
-
-				$('.Registrar').click(function(){
-					$('body').append($compile("<registro/>")(scope));
-					scope.$apply(); 
-				});
-			}
+			templateUrl: './header/header.html'
 		}
 	}
 
