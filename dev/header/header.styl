@@ -1,4 +1,4 @@
-header
+header, .Header-perfil
 	background: $morado;
 	color: white;
 	display: flex;
@@ -23,3 +23,17 @@ header
 				background: $azul;
 			&.InicioSesion:hover
 				background: $naranja;
+.Header-perfil
+	div
+		padding:.5em;
+	&-img
+		width: 2em;
+		height: 2em;
+		background: red;
+		border-radius: 100%;
+		margin-right: 1em;
+		background-size: cover;
+	&-user
+		margin-right: 1em;
+	&-config
+		cursor: pointer;
