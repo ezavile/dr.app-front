@@ -26,6 +26,7 @@ header, .Header-perfil
 .Header-perfil
 	div
 		padding:.5em;
+		position: relative;
 	&-img
 		width: 2em;
 		height: 2em;
@@ -37,3 +38,25 @@ header, .Header-perfil
 		margin-right: 1em;
 	&-config
 		cursor: pointer;
+	&-menu
+		background: $morado;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		z-index: 1;
+		height:0;
+		overflow: hidden;
+		font-size: .8em;
+		transition all 0.30s ease-in-out
+		ul
+			margin: 0;
+			padding: 0;
+			li
+				cursor: pointer;
+				padding: .5em;
+				&:hover
+					background: rgba(white, 0.2);
+
+.u-menu-collapse
+	height: 12em;

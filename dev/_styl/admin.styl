@@ -1,0 +1,140 @@
+.AdminPerfil
+	padding: 1em;
+	&-img
+		text-align: center;
+		padding: 0 0 2em;
+		figure
+			width: 12em;
+			height: 12em;
+			background-size: cover;
+			border-radius: 100%;
+			margin: 0 auto;
+			border: 2px solid $azul;
+	&-info
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		div
+			display: flex;
+			justify-content: space-between;
+			width: 50%;
+			padding: 0 2em;
+			flex-wrap: wrap;
+			margin-bottom: 1em;
+			input,
+			textarea,
+			select
+				width: 15em;
+				flex-grow: 1;
+			label
+				width: 7em;
+	&-button
+		text-align: center;
+		padding: 1em 0 0;
+		button:first-child
+			margin-right: 2em;
+	&-ficha
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 2em 0;
+		&-item
+			width: 15em;
+			margin: 1em;
+			padding: .5em;
+			border-radius: 10px;
+			border: 1px solid $azul;
+			&-detail
+				margin: 0 0 1em;
+				font-size: .8em;
+				text-align: center;
+				padding: .5em;
+				margin-top: 1em;
+				font-weight: bold;
+			figure
+				width: 8em;
+				height: 8em;
+				background-size: cover;
+				margin: 0 auto;
+				border-radius: 100%;
+	&-mensajes
+		display: flex;
+		position: relative;
+		&-people
+			display: flex;
+			flex-flow: column;
+			flex-shrink: 0;
+			&-person
+				padding: 1em 0;
+				width: 8em;
+				margin: 1em 0 0;
+				&:first-child
+					margin: 0;
+				figure
+					width: 5em;
+					height: 5em;;
+					background-size: cover;
+					margin: 0 auto;
+					margin-bottom: .5em;
+					border-radius: 100%;
+					cursor: pointer;
+					position: relative;
+					&:hover
+						&:after
+							content: "Ver mensajes";
+							color: white;
+							font-size: .7em;
+							font-weight: bold;
+							justify-content: center;
+							display: flex;
+							align-items:center;
+							position: absolute;
+							left: 0;
+							right: 0;
+							top: 0;
+							bottom: 0;
+							border-radius: 100%;
+							background: rgba(black, 0.4);
+				figcaption
+					text-align: center;
+		&-content
+			padding: 0 2em 7em;
+			background: rgba($azul, 0.1);
+			flex-grow: 1;
+			&-new
+				position: absolute;
+				bottom: 0em;
+				left: 8em;
+				right: 0;
+				display: flex;
+				justify-content: space-between;
+				padding: 1em;
+				background: white;
+				textarea
+					flex-grow: 1;
+				button
+					margin-left: 1em;
+			&-user
+				padding: .5em;
+				font-weight: bold;
+				font-size: .9em;
+				text-align: right;
+.u-person-selected
+	background: rgba($morado, 0.4);
+	color: white;
+	
+.Ficha-cita
+	position: relative;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	&-options
+		display: flex;
+		justify-content: space-between;
+		margin-top: 1em;
+	&-info
+		font-size: .9em;
+		margin-top: .5em;
+		& > *
+			text-align: center;
+			margin:0;
