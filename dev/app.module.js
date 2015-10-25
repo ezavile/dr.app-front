@@ -3,6 +3,7 @@
 	//modulo de rutas - ui-router
 	angular.module('drApp', [
 			'ui.router',
+			'swxSessionStorage',
 			'drApp.Helpers',
 			'drApp.Usuario',
 			'drApp.Doctor',
