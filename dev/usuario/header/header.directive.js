@@ -1,14 +1,15 @@
 (function () {
 
-angular
-	.module('drApp.Usuario')
-	.directive('header', header);
+	angular
+		.module('drApp.Usuario')
+		.directive('header', header);
 
-	function header(){
-		return{
-			restrict: 'A', 
-			templateUrl: './usuario/header/header.html'
+		function header(){
+			return{
+				restrict: 'A',
+				templateUrl: './usuario/header/header.html',
+				controller: 'HeaderController'
+			}
 		}
-	}
 
 })();

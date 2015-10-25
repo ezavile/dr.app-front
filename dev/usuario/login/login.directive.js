@@ -4,15 +4,11 @@
 		.module('drApp.Usuario')
 		.directive('login', login);
 
-		login.$inject = ['$sessionStorage'];
-
-		function login($sessionStorage){
+		function login(){
 			return{
 				restrict: 'E',
 				templateUrl: './usuario/login/login.html',
-				controller: ['$sessionStorage', function(){
-					$sessionStorage.put('myKey', 'myValue');
-				}]
+				controller: 'LoginController'
 			}
 		}
 

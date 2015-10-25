@@ -1,10 +1,10 @@
 div(class="Popup Login" popup-close)
-	form
+	form(name="loginForm" ng-submit="loginForm.$valid && login()")
 		h3 Iniciar Sesión
-		div
+		div(ng-class="{'u-input-required': loginForm.usuario.$error.required}")
 			label Usuario
-			input(type="text")
-		div
+			input(type="text" ng-model="usr.usuario" name="usuario" required)
+		div(ng-class="{'u-input-required': loginForm.password.$error.required}")
 			label Contraseña
-			input(type="password")
-		button(type="submit") Entrar
+			input(type="password" ng-model="usr.password" name="password" required)
+		button(ng-class="{'u-disabled': !loginForm.$valid}") Entrar

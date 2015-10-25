@@ -70,5 +70,14 @@
 
 	}])
 
+	.run(['$rootScope','$state','$stateParams','$sessionStorage',function ($rootScope, $state, $stateParams, $sessionStorage) {
+		$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+			var usuarioActual = $sessionStorage.get('usuarioActual') || undefined;
+			/*if(usuarioActual){
+				if(usuarioActual.tipo === 'doctor')
+			}*/
+		})
+	}]);
+
 
 })();

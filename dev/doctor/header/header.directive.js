@@ -2,11 +2,11 @@
 
 angular
 	.module('drApp.Doctor')
-	.directive('headerDoc', headerDoc);
+	.directive('headerDoctor', headerDoctor);
 
-	function headerDoc(){
+	function headerDoctor(){
 		return{
-			restrict: 'E', 
+			restrict: 'E',
 			templateUrl: './doctor/header/header.html'
 		}
 	}

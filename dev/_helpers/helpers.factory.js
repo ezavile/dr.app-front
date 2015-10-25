@@ -9,7 +9,7 @@
 
 		helperFactory.popupClose = function () {
 			var popup = angular.element(document.querySelectorAll("[popup-close]"));
-			popup[0].remove()
+			popup[0].remove();
 		};
 
 		return helperFactory;
