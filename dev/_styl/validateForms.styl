@@ -1,0 +1,31 @@
+invalid()
+	position: absolute;
+	font-size: .7em;
+	color: rgba(red,0.3);
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	padding-right: 1em;
+
+.u-input-required
+	position: relative;
+	input
+		border: 1px solid red;
+	&:after
+		content: "* Campo requerido";
+		invalid();
+.u-input-errorEmail
+	position: relative;
+	input
+		border: 1px solid red;
+	&:after
+		content: "* Email incorrecto";
+		invalid();
+.u-disabled
+	opacity: .5;
+	cursor: default;
+	pointer-events:none;
+	user-select: none;
