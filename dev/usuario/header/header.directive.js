@@ -1,13 +1,13 @@
 (function () {
 
 angular
-	.module('drApp.Header')
+	.module('drApp.Usuario')
 	.directive('header', header);
 
 	function header(){
 		return{
 			restrict: 'A', 
-			templateUrl: './header/header.html'
+			templateUrl: './usuario/header/header.html'
 		}
 	}
 

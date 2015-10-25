@@ -1,13 +1,13 @@
 (function () {
 
 	angular
-		.module('drApp.Login')
+		.module('drApp.Usuario')
 		.directive('login', login);
 
 		function login(){
 			return{
 				restrict: 'E',
-				templateUrl: './login/login.html'
+				templateUrl: './usuario/login/login.html'
 			}
 		}
 

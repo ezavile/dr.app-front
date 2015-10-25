@@ -1,6 +1,6 @@
 (function () {
 
 angular
-	.module('drApp.Header',[]);
+	.module('drApp.Usuario',[]);
 
 })();

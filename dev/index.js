@@ -1,8 +1,5 @@
 require('./app.module');
 require('./_helpers/_helpers');
-require('./header/_header');
-require('./principal/_principal');
-require('./login/_login');
-require('./registro/_registro');
+require('./usuario/_usuario')
 //DOC
 require('./doctor/_doctor');

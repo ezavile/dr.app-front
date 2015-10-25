@@ -1,4 +1,3 @@
-header(header)
 section.Principal
 	form
 		p ¡Encuentra de la manera más fácil a tu médico por especialidad!
@@ -7,25 +6,25 @@ section.Principal
 			option Valor 2
 			option Valor 3
 			option Valor 4
-		button(ui-sref="doctor.listado({especialidad: 'Ginecologo'})") Buscar
+		button(ui-sref="usuario.listado({especialidad: 'Ginecologo'})") Buscar
 	form
 		p ¡Que enfermedad tienes!
 		input(type="text", placeholder="Ej. epilepsia")
-		button(ui-sref="listado") Buscar
+		button(ui-sref="doctor.perfil") Buscar
 section.Destacados
-	div(class="Perfil", ui-sref="perfil_doc")
+	div(class="Perfil")
 		img(src="img/doctor1.jpg", class="Perfil-img")
 		h3.Perfil-nombre Nombre doctor
 		p.Perfil-especialidad especialidad
-	div(class="Perfil", ui-sref="perfil_doc")
+	div(class="Perfil")
 		img(src="img/doctor1.jpg", class="Perfil-img")
 		h3.Perfil-nombre Nombre doctor
 		p.Perfil-especialidad especialidad
-	div(class="Perfil", ui-sref="perfil_doc")
+	div(class="Perfil")
 		img(src="img/doctor1.jpg", class="Perfil-img")
 		h3.Perfil-nombre Nombre doctor
 		p.Perfil-especialidad especialidad
-	div(class="Perfil", ui-sref="perfil_doc")
+	div(class="Perfil")
 		img(src="img/doctor1.jpg", class="Perfil-img")
 		h3.Perfil-nombre Nombre doctor
 		p.Perfil-especialidad especialidad

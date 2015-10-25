@@ -4,10 +4,8 @@
 	angular.module('drApp', [
 			'ui.router',
 			'drApp.Helpers',
-			'drApp.Header',
-			'drApp.Login',
-			'drApp.Doctor',
-			'drApp.Registro'
+			'drApp.Usuario',
+			'drApp.Doctor'
 		]
 	)
 	.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider){ 
@@ -15,68 +13,47 @@
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
-			.state('main', {
-				url: '/',
-				templateUrl: './principal/principal.html'
+			.state('usuario', {
+				url: '',
+				templateUrl: './usuario/usuario.html'
 			})
-
-			.state('doctor',{
-				url: '/doctor',
-				template: "<header-doc class='Header-perfil' collapse-header-menu></header-doc><div ui-view></div>" 
-			})
-
-				.state('doctor.listado',{
-					url: '/listado/:especialidad',
+				.state('usuario.principal',{
+					url: '/',
+					templateUrl: "./usuario/principal/principal.html" 
+				})
+				.state('usuario.listado',{
+					url: '/doctores/:especialidad',
 					templateUrl: './doctor/listado/listado.html',
 					controller: 'DoctorListadoController'
 				})
-
-				.state('doctor.perfil',{
-					url: '/:id',
+				.state('usuario.perfil',{
+					url: '/doctor/:id',
 					templateUrl: './doctor/perfil/perfil.html',
 					controller: 'DoctorPerfilController'
 				})
 
-			.state('admin', {
-				url: '/admin',
-				template: "<div ui-view></div>"
+				/************ DOC ************************/
+
+			.state('doctor', {
+				url: '',
+				templateUrl: './doctor/doctor.html'
 			})
-
-				/************ ADMIN DOC ************************/
-
-				.state('admin.doctor', {
-					url: '/doc',
-					template: "<header-doc class='Header-perfil' collapse-header-menu></header-doc><div ui-view></div>"
-				})
-				.state('admin.doctor.perfil',{
+				.state('doctor.perfil',{
 					url: '/perfil',
 					templateUrl: './doctor/admin/perfil/perfil.html'
 				})
-				.state('admin.doctor.comentarios',{
+				.state('doctor.comentarios',{
 					url: '/comentarios',
 					templateUrl: './doctor/admin/comentarios/comentarios.html'
 				})
-				.state('admin.doctor.mensajes',{
+				.state('doctor.mensajes',{
 					url: '/mensajes',
 					templateUrl: './doctor/admin/mensajes/mensajes.html'
 				})
-				.state('admin.doctor.citas',{
+				.state('doctor.citas',{
 					url: '/citas',
 					templateUrl: './doctor/admin/citas/citas.html'
 				})
-
-
-				/************ ADMIN USER ********************/
-				.state('admin.usuario', {
-					url: '/usr',
-					template: "<header header></header><div ui-view></div>"
-				})
-
-				.state('admin.usuario.perfil',{
-					url: '/perfil',
-					templateUrl: './doctor/admin/perfil/perfil.html'
-				})
-
 
 	}])
 

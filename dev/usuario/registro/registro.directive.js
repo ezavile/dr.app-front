@@ -1,13 +1,13 @@
 (function () {
 
 angular
-	.module('drApp.Registro')
+	.module('drApp.Usuario')
 	.directive('registro', registro);
 
 	function registro(){
 		return{
 			restrict: 'E',
-			templateUrl: './registro/registro.html',
+			templateUrl: './usuario/registro/registro.html',
 			link: function(scope){
 				scope.registro = false;
 			}
