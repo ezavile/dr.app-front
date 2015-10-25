@@ -1,11 +1,11 @@
 (function(){
-	angular.module('drApp.Doctor')
+	angular.module('drApp.Paciente')
 	.directive('comentariosDoc', comentariosDoc);
 
 	function comentariosDoc(){
 		return {
 			restrict: 'E',
-			templateUrl: './doctor/comentarios/comentarios.html'
+			templateUrl: './paciente/comentarios/comentarios.html'
 		}
 	}
 

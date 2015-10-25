@@ -1,31 +1,34 @@
-//header-doc(class="Header-perfil", collapse-header-menu)
-section(class="PerfilDoctor")
-	article(class="PerfilDoctor-map")
-		map(center="-34.397, 150.644", zoom="8")
-			marker(position="-34.397, 150.644")
-			figure(class="PerfilDoctor-imgPerfil", style="background-image:url(../img/perfil_doc.jpg)")
-				figcaption Dr. Edgar Zavala
-	article(class="PerfilDoctor-menu")
-		nav
-			ul
-				li
-					i(class="icon-phone")
-					a(href="tel:-528448076459") (844) 417 7362
-				li
-					i(class="icon-inbox")
-					span Escribir mensaje
-				li(popup-add="<comentarios-doc />")
-					i(class="icon-comment")
-					span Comentarios
-				li(ng-click="doctor.agendarCita()" popup-add="<agendar-cita />")
-					i(class="icon-calendar")
-					span Agendar cita
-	article(class="PerfilDoctor-content")
-		article(class="PerfilDoctor-content-gallery")
-			ul(rn-carousel class="image" rn-carousel-auto-slide)
-				li(ng-repeat="img in doctor.imagenes")
-					div(class="layer")
-						figure(style="background-image: url({{img}});")
-		article(class="PerfilDoctor-content-servicios")
-			h2 Servicios
-			p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, animi voluptatem officia ipsa corrupti cum repellat. Sit, dolorum, voluptas. Eos placeat reiciendis ipsam accusantium? Ducimus aspernatur officiis voluptates et reiciendis!
+section(class="Admin")
+	article(class="Admin-img")
+		figure(style="background-image: url(./img/perfil_doc.jpg)")
+	article(class="Admin-info")
+		div
+			label Especialidad
+			select
+				option Valor 1
+				option Valor 2
+				option Valor 3
+		div
+			label Usuario
+			input(type="text")
+		div
+			label Nombre
+			input(type="text")
+		div
+			label Contraseña
+			input(type="text")
+		div
+			label Correo
+			input(type="text")
+		div
+			label.txtArea Dirección
+			textarea
+		div
+			label.txtArea Servicios
+			textarea
+		div
+			label Teléfono
+			input(type="text")
+	article(class="Admin-button")
+		button Guardar cambios
+		button(type="cancel") Cancelar

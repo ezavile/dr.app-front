@@ -5,7 +5,8 @@
 			'ui.router',
 			'drApp.Helpers',
 			'drApp.Usuario',
-			'drApp.Doctor'
+			'drApp.Doctor',
+			'drApp.Paciente'
 		]
 	)
 	.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider){ 
@@ -23,36 +24,47 @@
 				})
 				.state('usuario.listado',{
 					url: '/doctores/:especialidad',
-					templateUrl: './doctor/listado/listado.html',
-					controller: 'DoctorListadoController'
+					templateUrl: './usuario/listado/listado.html',
+					controller: 'UsuarioListadoController'
 				})
 				.state('usuario.perfil',{
-					url: '/doctor/:id',
-					templateUrl: './doctor/perfil/perfil.html',
-					controller: 'DoctorPerfilController'
+					url: '/:id',
+					templateUrl: './usuario/perfil/perfil.html',
+					controller: 'UsuarioPerfilController'
 				})
 
-				/************ DOC ************************/
+			/************ DOC ************************/
 
 			.state('doctor', {
-				url: '',
+				url: '/doctor',
 				templateUrl: './doctor/doctor.html'
 			})
 				.state('doctor.perfil',{
 					url: '/perfil',
-					templateUrl: './doctor/admin/perfil/perfil.html'
+					templateUrl: './doctor/perfil/perfil.html'
 				})
 				.state('doctor.comentarios',{
 					url: '/comentarios',
-					templateUrl: './doctor/admin/comentarios/comentarios.html'
+					templateUrl: './doctor/comentarios/comentarios.html'
 				})
 				.state('doctor.mensajes',{
 					url: '/mensajes',
-					templateUrl: './doctor/admin/mensajes/mensajes.html'
+					templateUrl: './doctor/mensajes/mensajes.html'
 				})
 				.state('doctor.citas',{
 					url: '/citas',
-					templateUrl: './doctor/admin/citas/citas.html'
+					templateUrl: './doctor/citas/citas.html'
+				})
+
+			/************ Paciente ************************/
+
+			.state('paciente', {
+				url: '/paciente',
+				templateUrl: './paciente/paciente.html'
+			})
+				.state('paciente.perfil',{
+					url: '/perfil',
+					templateUrl: './paciente/perfil/perfil.html'
 				})
 
 	}])

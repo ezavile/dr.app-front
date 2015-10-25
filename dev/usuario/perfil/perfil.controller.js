@@ -1,10 +1,10 @@
 (function(){
-	angular.module('drApp.Doctor')
-	.controller('DoctorPerfilController', DoctorPerfilController);
+	angular.module('drApp.Usuario')
+	.controller('UsuarioPerfilController', UsuarioPerfilController);
 
-	DoctorPerfilController.$inject=['$stateParams', '$scope', '$compile', 'DoctorFactory', 'DoctorService'];
+	UsuarioPerfilController.$inject=['$stateParams', '$scope', '$compile', 'DoctorFactory', 'DoctorService'];
 
-	function DoctorPerfilController($stateParams, $scope, $compile, DoctorFactory, DoctorService){
+	function UsuarioPerfilController($stateParams, $scope, $compile, DoctorFactory, DoctorService){
 		console.log($stateParams.id);
 		$scope.doctor = {};
 		$scope.doctor.imagenes = ['./img/buscador_bg.jpg', './img/doctor1.jpg'];

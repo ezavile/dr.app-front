@@ -1,11 +1,11 @@
 (function(){
 	
-	angular.module('drApp.Doctor')
+	angular.module('drApp.Paciente')
 	.directive('agendarCita',  agendarCita);
 
 	function agendarCita(){
 		return {
-			templateUrl: './doctor/agendar/agendar.html'
+			templateUrl: './paciente/agendar/agendar.html'
 		}
 	}
 

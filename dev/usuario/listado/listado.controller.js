@@ -1,10 +1,10 @@
 (function(){
-	angular.module('drApp.Doctor')
-	.controller('DoctorListadoController', DoctorListadoController);
+	angular.module('drApp.Usuario')
+	.controller('UsuarioListadoController', UsuarioListadoController);
 
-	DoctorListadoController.$inject=['$stateParams', 'DoctorFactory', 'DoctorService'];
+	UsuarioListadoController.$inject=['$stateParams', 'DoctorFactory', 'DoctorService'];
 
-	function DoctorListadoController($stateParams, DoctorFactory, DoctorService){
+	function UsuarioListadoController($stateParams, DoctorFactory, DoctorService){
 		console.log($stateParams.especialidad);
 
 		/*console.log(DoctorFactory.getDoctores())
