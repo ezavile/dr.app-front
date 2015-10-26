@@ -10,12 +10,19 @@
 			'drApp.Paciente'
 		]
 	)
-	.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider){ 
+	.config(config)
+	.run(run);
+
+
+	config.$inject = ['$stateProvider','$urlRouterProvider'];
+
+	function config($stateProvider, $urlRouterProvider){
 
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
 			.state('usuario', {
+				abstract: true,
 				url: '',
 				templateUrl: './usuario/usuario.html',
 				controller: 'UsuarioController'
@@ -30,7 +37,7 @@
 					controller: 'UsuarioListadoController'
 				})
 				.state('usuario.perfil',{
-					url: '/:id',
+					url: '/doc/:id',
 					templateUrl: './usuario/perfil/perfil.html',
 					controller: 'UsuarioPerfilController'
 				})
@@ -38,6 +45,7 @@
 			/************ DOC ************************/
 
 			.state('doctor', {
+				abstract: true,
 				url: '/doctor',
 				templateUrl: './doctor/doctor.html'
 			})
@@ -61,6 +69,7 @@
 			/************ Paciente ************************/
 
 			.state('paciente', {
+				abstract: true,
 				url: '/paciente',
 				templateUrl: './paciente/paciente.html'
 			})
@@ -69,10 +78,11 @@
 					templateUrl: './paciente/perfil/perfil.html'
 				})
 
-	}])
+	}
 
-	.run(['$rootScope','$state','$stateParams','UsuarioFactory',function ($rootScope, $state, $stateParams, UsuarioFactory) {
+	run.$inject = ['$rootScope','$state','$stateParams','UsuarioFactory'];
 
+	function run($rootScope, $state, $stateParams, UsuarioFactory) {
 		var usuario = UsuarioFactory;
 
 		$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
@@ -91,7 +101,7 @@
 			}
 
 		});
-	}]);
+	}
 
 
 })();
