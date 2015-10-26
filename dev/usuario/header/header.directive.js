@@ -2,13 +2,12 @@
 
 	angular
 		.module('drApp.Usuario')
-		.directive('header', header);
+		.directive('headerUsuario', headerUsuario);
 
-		function header(){
+		function headerUsuario(){
 			return{
-				restrict: 'A',
-				templateUrl: './usuario/header/header.html',
-				controller: 'HeaderController'
+				restrict: 'E',
+				templateUrl: './usuario/header/header.html'
 			}
 		}
 

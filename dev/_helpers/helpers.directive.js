@@ -4,7 +4,27 @@
 		.module('drApp.Helpers')
 		.directive('popupClose', popupClose)
 		.directive('popupAdd', popupAdd)
-		.directive('collapseHeaderMenu', collapseHeaderMenu);
+		.directive('collapseHeaderMenu', collapseHeaderMenu)
+		.directive('logout', logout);
+
+		logout.$inject = ['$sessionStorage','$state', 'UsuarioFactory'];
+
+		function logout($sessionStorage, $state, UsuarioFactory){
+			return{
+				restrict: 'A',
+				link: function(scope, elem, attrs){
+					var usuario = UsuarioFactory;
+					elem.bind('click', function(e) {
+						usuario.logout();
+						if($state.current.name === 'usuario.principal'){
+							$state.reload();
+						} else {
+							$state.go('usuario.principal');
+						}
+					});
+				}
+			}
+		}
 
 		function popupClose(){
 			return{

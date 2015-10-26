@@ -17,11 +17,12 @@
 		$stateProvider
 			.state('usuario', {
 				url: '',
-				templateUrl: './usuario/usuario.html'
+				templateUrl: './usuario/usuario.html',
+				controller: 'UsuarioController'
 			})
 				.state('usuario.principal',{
 					url: '/',
-					templateUrl: "./usuario/principal/principal.html" 
+					templateUrl: "./usuario/principal/principal.html"
 				})
 				.state('usuario.listado',{
 					url: '/doctores/:especialidad',
@@ -70,13 +71,26 @@
 
 	}])
 
-	.run(['$rootScope','$state','$stateParams','$sessionStorage',function ($rootScope, $state, $stateParams, $sessionStorage) {
+	.run(['$rootScope','$state','$stateParams','$sessionStorage','UsuarioFactory',function ($rootScope, $state, $stateParams, $sessionStorage, UsuarioFactory) {
+
+		var usuario = UsuarioFactory;
+
 		$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-			var usuarioActual = $sessionStorage.get('usuarioActual') || undefined;
-			/*if(usuarioActual){
-				if(usuarioActual.tipo === 'doctor')
-			}*/
-		})
+			//validando rutas segun el usuario logeado
+			var state = toState.name.split(".");
+			state = state[0];
+			if(usuario.isLogeado()){
+				if(state === 'doctor' && usuario.tipo() !== 'doctor'){
+					$state.go('usuario.principal');
+					event.preventDefault();
+				}
+				if(state === 'paciente' && usuario.tipo() !== 'paciente'){
+					$state.go('usuario.principal');
+					event.preventDefault();
+				}
+			}
+
+		});
 	}]);
 
 

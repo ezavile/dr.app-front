@@ -4,10 +4,12 @@
 		.module('drApp.Usuario')
 		.controller('LoginController', LoginController);
 
-		LoginController.$inject = ['$scope', '$sessionStorage', '$state', 'HelpersFactory'];
+		LoginController.$inject = ['$scope', '$state', 'UsuarioFactory', 'HelpersFactory'];
 
-		function LoginController($scope, $sessionStorage, $state, HelpersFactory){ 
+		function LoginController($scope, $state, UsuarioFactory, HelpersFactory){ 
 			var helper = HelpersFactory;
+			var usuario = UsuarioFactory;
+
 			$scope.usr = {};
 			$scope.login = function(){
 				if($scope.usr.usuario === 'paciente' && $scope.usr.password === 'paciente'){
@@ -16,7 +18,7 @@
 				if($scope.usr.usuario === 'doctor' && $scope.usr.password === 'doctor'){
 					$scope.usr.tipo = 'doctor';
 				}
-				$sessionStorage.put('usuarioActual', $scope.usr);
+				usuario.setStatus($scope.usr);
 				$state.reload();
 				helper.popupClose(); 
 			}
