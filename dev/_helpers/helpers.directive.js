@@ -7,9 +7,9 @@
 		.directive('collapseHeaderMenu', collapseHeaderMenu)
 		.directive('logout', logout);
 
-		logout.$inject = ['$sessionStorage','$state', 'UsuarioFactory'];
+		logout.$inject = ['$state', 'UsuarioFactory'];
 
-		function logout($sessionStorage, $state, UsuarioFactory){
+		function logout($state, UsuarioFactory){
 			return{
 				restrict: 'A',
 				link: function(scope, elem, attrs){

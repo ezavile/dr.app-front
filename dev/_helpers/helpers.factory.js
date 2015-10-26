@@ -2,9 +2,9 @@
 	angular.module('drApp.Helpers')
 	.factory('HelpersFactory', HelpersFactory);
 
-	HelpersFactory.$inject = ['$sessionStorage']
+	HelpersFactory.$inject = []
 
-	function HelpersFactory($sessionStorage){
+	function HelpersFactory(){
 
 		var helperFactory = {};
 

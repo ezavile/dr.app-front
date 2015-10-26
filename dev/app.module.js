@@ -71,7 +71,7 @@
 
 	}])
 
-	.run(['$rootScope','$state','$stateParams','$sessionStorage','UsuarioFactory',function ($rootScope, $state, $stateParams, $sessionStorage, UsuarioFactory) {
+	.run(['$rootScope','$state','$stateParams','UsuarioFactory',function ($rootScope, $state, $stateParams, UsuarioFactory) {
 
 		var usuario = UsuarioFactory;
 
