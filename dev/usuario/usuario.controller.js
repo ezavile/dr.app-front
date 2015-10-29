@@ -11,6 +11,7 @@
 			var usuario = UsuarioFactory;
 
 			if(usuario.isLogeado()){
+					console.log(usuario.tipo())
 				header[0].innerHTML = " ";
 				if(usuario.tipo() == 'doctor'){
 					header.append($compile("<header-doctor class='Header-perfil' collapse-header-menu />")($scope));

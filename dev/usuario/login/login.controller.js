@@ -18,6 +18,7 @@
 				if($scope.usr.usuario === 'doctor' && $scope.usr.password === 'doctor'){
 					$scope.usr.tipo = 'doctor';
 				}
+				console.log($scope.usr)
 				usuario.setStatus($scope.usr);
 				$state.reload();
 				helper.popupClose(); 
