@@ -12,20 +12,19 @@
 			var fd = new FormData();
 			fd.append('file', file);
 
-			var res = $http.post(URL.URL_API_REST + 'upload', fd, {
-				transformRequest: angular.identity,
-				headers: {'Content-Type': undefined}
-			})
-
-			res.success(function(response) {
-				//console.log(response);
-				deferred.resolve(response);
-			});
-
-			res.catch(function(response) {
-				//console.log(response);
-				deferred.reject(response);
-			});
+			$http
+				.post(URL.URL_API_REST + 'upload', fd, {
+					transformRequest: angular.identity,
+					headers: {'Content-Type': undefined}
+				})
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
 
 			return deferred.promise;
 		}

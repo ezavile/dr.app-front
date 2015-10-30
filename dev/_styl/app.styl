@@ -14,7 +14,7 @@
 
 *
 	box-sizing: border-box;
-
+	outline: none;
 body
 	color: #16210b;
 	font-size: 16px;
@@ -68,7 +68,37 @@ label.txtArea
 	overflow: hidden;
 	background: white;
 	boxShadow();
-	
+.Upload
+	margin: 0 auto;
+	height: 8em;
+	bgCover('')
+	border-radius: 100%;
+	width: 8em;
+	position: relative;
+	input[type=file]
+		position: absolute;
+		left: 0;
+		height: 100%;
+		width: 8em;
+		border-radius: 100%;
+		border: 0;
+		cursor: pointer;
+		color: transparent;
+		background: transparent;
+		&::-webkit-file-upload-button
+			visibility: hidden;
+		&:hover
+			background: rgba(black, 0.6)
+			&::before
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 100%;
+				font-family: icomoon;
+				content: "\e901";
+				color: white;
+				font-size: 1.5em;
 @import '../usuario/usuario'
 @import '../paciente/paciente'
 //@import '../doctor/doctor'

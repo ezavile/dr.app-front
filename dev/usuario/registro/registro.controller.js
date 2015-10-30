@@ -3,18 +3,38 @@
 		.module('drApp.Usuario')
 		.controller('RegistroController', RegistroController);
 
-		RegistroController.$inject = ['$scope', 'DoctorService'];
+		RegistroController.$inject = ['$scope', 'URL', 'DoctorService'];
 
-		function RegistroController($scope, DoctorService){
+		function RegistroController($scope, URL, DoctorService){
 			$scope.doctor = {};
-			console.log("RegistroController")
+			$scope.doctor.imgPerfil = URL.URL_IMG_DEFAULT;
+
+			//obtener las especialidades
+			DoctorService.getEspecialidades()
+				.then(function(res){
+					$scope.especialidades = res;
+				})
+				.catch(function(res){
+					console.log(res);
+				});
+
+			//detected when file was uploaded
+			$scope.$watchCollection('doctor', function(newVal){
+				//$scope.doctor.foto1 = newVal;
+				$scope.doctor = newVal;
+			})
+
+			$scope.doctor.foto1 = 'foto1';
+			$scope.doctor.foto2 = 'foto2';
+			$scope.doctor.foto3 = 'foto3';
+			
 			$scope.addDoctor = function(){
 				DoctorService.addDoctor($scope.doctor)
-					.then(function(response){
-						console.log(response);
+					.then(function(res){
+						console.log(res);
 					})
-					.catch(function(response){
-						console.log(response);
+					.catch(function(res){
+						console.log(res);
 					});
 			}
 		}

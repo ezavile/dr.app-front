@@ -8,14 +8,14 @@ div(class="Popup Registro" popup-close)
 		form(ng-if="registro == 'doctor'")
 			h3 Registro de doctor
 			div
+				div(class="Upload" style="background-image: url({{doctor.imgPerfil}})")
+					input(type="file" file-upload="doctor.imgPerfil")
+			div
 				label Especialidad
-				select(ng-model="doctor.especialidad")
-					option Valor 1
-					option Valor 2
-					option Valor 3
+				select(ng-model="doctor.idEspecialidad" ng-init="doctor.idEspecialidad = doctor.idEspecialidad || especialidades[0].idEspecialidad" ng-options="option.idEspecialidad as option.especialidad for option in especialidades")
 			div
 				label Usuario
-				input(type="text", ng-model="doctor.usuario")
+				input(type="text", ng-model="doctor.doctor")
 			div
 				label Nombre
 				input(type="text", ng-model="doctor.nombre")
@@ -33,7 +33,7 @@ div(class="Popup Registro" popup-close)
 				textarea(ng-model="doctor.servicios")
 			div
 				label Teléfono
-				input(type="text")
+				input(type="text", ng-model="doctor.telefono")
 			button(ng-click="addDoctor()") Registrar
 		form(ng-if="registro == 'usr'")
 			h3 Registro de paciente
