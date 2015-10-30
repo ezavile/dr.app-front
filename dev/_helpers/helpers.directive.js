@@ -7,7 +7,15 @@
 		.directive('collapseHeaderMenu', collapseHeaderMenu)
 		.directive('logout', logout)
 		.directive('fileUpload', fileUpload)
-		.directive('googleplace', googleplace);
+		.directive('googleplace', googleplace)
+		.directive('notify', notify);
+
+		function notify(){
+			return {
+				restrict: 'E',
+				template: '<article></article>'
+			}
+		}
 
 		function googleplace() {
 			return {
@@ -82,6 +90,9 @@
 					 elem.bind('click', function(e) {
 					 	if(e.target != this) return;
 						elem.remove();
+
+						var body = angular.element(document).find('body');
+						body.removeClass('popup-on');
 					 });
 				}
 			}
@@ -95,6 +106,7 @@
 				link: function(scope, elem, attrs) {
 					var body = angular.element(document).find('body');
 					elem.bind('click', function() {
+						body.addClass('popup-on');
 						body.append($compile(attrs.popupAdd)(scope));
 					});
 				}

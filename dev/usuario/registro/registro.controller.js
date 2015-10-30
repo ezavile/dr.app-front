@@ -3,11 +3,14 @@
 		.module('drApp.Usuario')
 		.controller('RegistroController', RegistroController);
 
-		RegistroController.$inject = ['$scope', 'URL', 'DoctorService'];
+		RegistroController.$inject = ['$scope', 'URL', 'DoctorService', 'PacienteService'];
 
-		function RegistroController($scope, URL, DoctorService){
+		function RegistroController($scope, URL, DoctorService, PacienteService){
 			$scope.doctor = {};
-			$scope.doctor.imgPerfil = URL.URL_IMG_DEFAULT;
+			$scope.doctor.imgPerfil = URL.URL_IMG_PERFIL_DEFAULT;
+			$scope.doctor.foto1 = URL.URL_IMG_GALERIA_DEFAULT;
+			$scope.doctor.foto2 = URL.URL_IMG_GALERIA_DEFAULT;
+			$scope.doctor.foto3 = URL.URL_IMG_GALERIA_DEFAULT;
 
 			//obtener las especialidades
 			DoctorService.getEspecialidades()
@@ -17,10 +20,6 @@
 				.catch(function(res){
 					console.log(res);
 				});
-
-			$scope.doctor.foto1 = 'foto1';
-			$scope.doctor.foto2 = 'foto2';
-			$scope.doctor.foto3 = 'foto3';
 
 			$scope.addDoctor = function(){ 
 				DoctorService.addDoctor($scope.doctor)
@@ -32,5 +31,17 @@
 					});
 			}
 
+			$scope.paciente = {};
+			$scope.paciente.imgPerfil = URL.URL_IMG_PERFIL_DEFAULT;
+
+			$scope.addPaciente = function(){ 
+				PacienteService.addPaciente($scope.paciente)
+					.then(function(res){
+						console.log(res);
+					})
+					.catch(function(res){
+						console.log(res);
+					});
+			}
 		}
 })();
