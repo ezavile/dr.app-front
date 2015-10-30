@@ -5,7 +5,35 @@
 		.directive('popupClose', popupClose)
 		.directive('popupAdd', popupAdd)
 		.directive('collapseHeaderMenu', collapseHeaderMenu)
-		.directive('logout', logout);
+		.directive('logout', logout)
+		.directive('fileUpload', fileUpload);
+
+		fileUpload.$inject = ['$parse', 'HelpersService'];
+
+		function fileUpload($parse, HelpersService){
+			return {
+				restrict: 'A',
+				link: function(scope, element, attrs) {
+					//ng-model from controller
+					var model = $parse(attrs.fileUpload);
+					var modelSetter = model.assign;
+
+					//every change file, this upload
+					element.bind('change', function(){
+						var file = element[0].files[0];
+						HelpersService
+							.upload(file)
+							.then(function(response){
+								//return url file uploaded
+								modelSetter(scope, response.url);
+							})
+							.catch(function(response){
+								console.log(response);
+							});
+					});
+				}
+			}
+		}
 
 		logout.$inject = ['$state', 'UsuarioFactory'];
 
