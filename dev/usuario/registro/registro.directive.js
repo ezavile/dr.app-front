@@ -10,7 +10,8 @@ angular
 			templateUrl: './usuario/registro/registro.html',
 			link: function(scope){
 				scope.registro = false;
-			}
+			},
+			controller: 'RegistroController'
 		}
 	}
 

@@ -9,32 +9,32 @@ div(class="Popup Registro" popup-close)
 			h3 Registro de doctor
 			div
 				label Especialidad
-				select
+				select(ng-model="doctor.especialidad")
 					option Valor 1
 					option Valor 2
 					option Valor 3
 			div
 				label Usuario
-				input(type="text")
+				input(type="text", ng-model="doctor.usuario")
 			div
 				label Nombre
-				input(type="text")
+				input(type="text", ng-model="doctor.nombre")
 			div
 				label Contraseña
-				input(type="text")
+				input(type="text", ng-model="doctor.password")
 			div
 				label Correo
-				input(type="text")
+				input(type="text", ng-model="doctor.correo")
 			div
 				label.txtArea Dirección
-				textarea
+				textarea(ng-model="doctor.direccion")
 			div
 				label.txtArea Servicios
-				textarea
+				textarea(ng-model="doctor.servicios")
 			div
 				label Teléfono
 				input(type="text")
-			button(ng-click="addDoctor") Registrar
+			button(ng-click="addDoctor()") Registrar
 		form(ng-if="registro == 'usr'")
 			h3 Registro de paciente
 			div

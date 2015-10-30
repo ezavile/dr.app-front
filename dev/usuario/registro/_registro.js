@@ -1,1 +1,2 @@
-require('./registro.directive')
+require('./registro.directive');
+require('./registro.controller');

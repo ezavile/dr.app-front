@@ -2,30 +2,44 @@
 	angular.module('drApp.Doctor')
 	.service('DoctorService', DoctorService);
 
+	DoctorService.$inject = ['$http','$q', 'URL'];
 
-	function DoctorService(){
+	function DoctorService($http, $q, URL){
 
-		var dataFactory = {};
-		doctores = [{'nombre':'Edgar', 'edad': 22}, {'nombre':'Edith', 'edad': 19}];
+		function addDoctor(doc){
+			var deferred = $q.defer();
 
-		function getDoctores() {
-			return doctores;
-			//return $http.get(urlBase);
-		};
+			doc1 = {
+			"usuario": "Doc5",
+			"password": "test",
+			"nombre": "Nombre del doctor 2",
+			"servicios": "servicios",
+			"telefono": "8448076459",
+			"direccion": "direccion del doctor",
+			"correo": "doc2@gmail.com",
+			"foto1": "foto1",
+			"foto2": "foto2",
+			"foto3": "foto3"
+			};
 
-		function getDoctor(id) {
-			doctor = {'nombre':'Edgar', 'edad': 22};
-			return doctor;
-			//return $http.get(urlBase + '/' + id);
-		};
+			var doctor = angular.fromJson(doc1);
 
-		function addDoctor(dr){
-			doctores.push(dr);
+			var res = $http.post(URL.URL_API_REST + 'doctor', doctor);
+
+			res.success(function(response) {
+				console.log(response);
+				deferred.resolve(response);
+			});
+
+			res.catch(function(response) {
+				console.log(response);
+				deferred.reject(response);
+			});
+
+			return deferred.promise;
 		}
 
 		return {
-			getDoctores: getDoctores,
-			getDoctor: getDoctor,
 			addDoctor: addDoctor
 		}
 	}
