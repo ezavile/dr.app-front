@@ -5,48 +5,54 @@ div(class="Popup Registro" popup-close)
 		figure(class="Registro-op-usr" ng-click="registro = 'usr'")
 			figcaption ¿Estas en busca de un doctor?
 	section.Registro-form
-		form(ng-if="registro == 'doctor'")
+		form(ng-if="registro == 'doctor'" name="DoctorForm" ng-submit="DoctorForm.$valid && addDoctor()")
 			h3 Registro de doctor
-			div
+			div.flex
 				div(class="Upload" style="background-image: url({{doctor.imgPerfil}})")
-					input(type="file" file-upload="doctor.imgPerfil")
-			div
-				label Especialidad
-				select(ng-model="doctor.idEspecialidad" ng-init="doctor.idEspecialidad = doctor.idEspecialidad || especialidades[0].idEspecialidad" ng-options="option.idEspecialidad as option.especialidad for option in especialidades")
-			div
-				label Usuario
-				input(type="text", ng-model="doctor.doctor")
-			div
-				label Nombre
-				input(type="text", ng-model="doctor.nombre")
-			div
-				label Contraseña
-				input(type="text", ng-model="doctor.password")
-			div
-				label Correo
-				input(type="text", ng-model="doctor.correo")
-			div
-				label.txtArea Dirección
-				textarea(ng-model="doctor.direccion")
-			div
-				label.txtArea Servicios
-				textarea(ng-model="doctor.servicios")
-			div
-				label Teléfono
-				input(type="text", ng-model="doctor.telefono")
-			button(ng-click="addDoctor()") Registrar
+					input(type="file" file-upload="doctor.imgPerfil" required)
+			div.flex
+				div
+					label Especialidad
+					select(ng-model="doctor.idEspecialidad" ng-init="doctor.idEspecialidad = doctor.idEspecialidad || especialidades[0].idEspecialidad" ng-options="option.idEspecialidad as option.especialidad for option in especialidades")
+				div(ng-class="{'u-input-required': DoctorForm.nombre.$error.required}")
+					label Nombre
+					input(type="text", name="nombre" ng-model="doctor.nombre" required)
+			div.flex
+				div(ng-class="{'u-input-required': DoctorForm.usuario.$error.required}")
+					label Usuario
+					input(type="text", name="usuario" style="display:none")
+					input(type="text", name="usuario" ng-model="doctor.doctor" required)
+				div(ng-class="{'u-input-required': DoctorForm.password.$error.required}")
+					label Contraseña
+					input(type="text", name="password" style="display:none")
+					input(type="password", name="password" ng-model="doctor.password" required)
+			div.flex
+				div(ng-class="{'u-input-required': DoctorForm.telefono.$error.required}")
+					label Teléfono
+					input(type="text", name="telefono" ng-model="doctor.telefono" required)
+				div(ng-class="{'u-input-required': DoctorForm.correo.$error.required, 'u-input-errorEmail': DoctorForm.correo.$error.email}")
+					label Correo
+					input(type="email", name="correo" ng-model="doctor.correo" required)
+			div.flex
+				div(ng-class="{'u-input-required': DoctorForm.servicios.$error.required}")
+					label.txtArea Servicios
+					textarea(ng-model="doctor.servicios" name="servicios" required)
+				div(ng-class="{'u-input-required': DoctorForm.direccion.$error.required}")
+					label.txtArea Dirección
+					textarea(ng-model="doctor.direccion" name="direccion" required)
+			button(ng-class="{'u-disabled': !DoctorForm.$valid}") Registrar
 		form(ng-if="registro == 'usr'")
 			h3 Registro de paciente
 			div
 				label Usuario
-				input(type="text")
+				input(type="text" required)
 			div
 				label Nombre
-				input(type="text")
+				input(type="text" required)
 			div
 				label Contraseña
-				input(type="text")
+				input(type="text" required)
 			div
 				label Correo
-				input(type="text")
+				input(type="text" required)
 			button(type="submit") Registrar

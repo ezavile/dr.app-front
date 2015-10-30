@@ -28,16 +28,15 @@
 			var deferred = $q.defer();
 
 			var doctor = angular.fromJson(doc);
-			console.log(doctor);
 
 			$http
 				.post(URL.URL_API_REST + 'doctor', doctor)
 				.success(function(res) {
-					console.log(res);
+					//console.log(res);
 					deferred.resolve(res);
 				})
 				.catch(function(res) {
-					console.log(res);
+					//console.log(res);
 					deferred.reject(res);
 				});
 
