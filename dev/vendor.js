@@ -5,3 +5,4 @@ require('ngmap');
 require('angular-touch');
 require('angular-carousel');
 require('angular-swx-session-storage');
+require('angularLocalStorage');
