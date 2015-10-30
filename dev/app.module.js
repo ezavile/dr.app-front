@@ -4,6 +4,7 @@
 	angular.module('drApp', [
 			'ui.router',
 			'swxSessionStorage',
+			'drApp.Constants',
 			'drApp.Helpers',
 			'drApp.Usuario',
 			'drApp.Doctor',
