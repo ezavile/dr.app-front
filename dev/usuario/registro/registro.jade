@@ -9,7 +9,7 @@ div(class="Popup Registro" popup-close)
 			h3 Registro de doctor
 			div.flex
 				div(class="Upload" style="background-image: url({{doctor.imgPerfil}})")
-					input(type="file" file-upload="doctor.imgPerfil" required)
+					input(type="file" file-upload="doctor.imgPerfil")
 			div.flex
 				div
 					label Especialidad
@@ -39,7 +39,11 @@ div(class="Popup Registro" popup-close)
 					textarea(ng-model="doctor.servicios" name="servicios" required)
 				div(ng-class="{'u-input-required': DoctorForm.direccion.$error.required}")
 					label.txtArea Dirección
-					textarea(ng-model="doctor.direccion" name="direccion" required)
+					textarea(ng-model="doctor.direccion" googleplace direccion="doctor.direccion" coordenadas="doctor.coordenadas" name="direccion" required )
+			div.flex
+				article(class="u-mapa")
+					map(center="{{doctor.coordenadas}}", zoom="16")
+						marker(position="{{doctor.coordenadas}}")
 			button(ng-class="{'u-disabled': !DoctorForm.$valid}") Registrar
 		form(ng-if="registro == 'usr'")
 			h3 Registro de paciente

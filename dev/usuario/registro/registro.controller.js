@@ -18,17 +18,11 @@
 					console.log(res);
 				});
 
-			//detected when file was uploaded
-			$scope.$watchCollection('doctor', function(newVal){
-				//$scope.doctor.foto1 = newVal;
-				$scope.doctor = newVal;
-			})
-
 			$scope.doctor.foto1 = 'foto1';
 			$scope.doctor.foto2 = 'foto2';
 			$scope.doctor.foto3 = 'foto3';
-			
-			$scope.addDoctor = function(){
+
+			$scope.addDoctor = function(){ 
 				DoctorService.addDoctor($scope.doctor)
 					.then(function(res){
 						console.log(res);
@@ -37,5 +31,6 @@
 						console.log(res);
 					});
 			}
+
 		}
 })();

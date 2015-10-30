@@ -6,26 +6,46 @@
 		.directive('popupAdd', popupAdd)
 		.directive('collapseHeaderMenu', collapseHeaderMenu)
 		.directive('logout', logout)
-		.directive('fileUpload', fileUpload);
+		.directive('fileUpload', fileUpload)
+		.directive('googleplace', googleplace);
 
-		fileUpload.$inject = ['$parse', 'HelpersService'];
-
-		function fileUpload($parse, HelpersService){
+		function googleplace() {
 			return {
 				restrict: 'A',
-				link: function(scope, element, attrs) {
-					//ng-model from controller
-					var model = $parse(attrs.fileUpload);
-					var modelSetter = model.assign;
+				scope: {
+					direccion: "=",
+					coordenadas: "="
+				},
+				link: function(scope, element, attrs, model) {
+					scope.gPlace = new google.maps.places.Autocomplete(element[0], {});
+					google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
+						var address = scope.gPlace.getPlace().formatted_address;
+						var latitude = scope.gPlace.getPlace().geometry.location.lat();
+						var longitude = scope.gPlace.getPlace().geometry.location.lng();
 
-					//every change file, this upload
+						scope.direccion = address;
+						scope.coordenadas = latitude + ',' + longitude;
+						scope.$apply();
+					});
+				}
+			};
+		}
+
+		fileUpload.$inject = ['HelpersService'];
+
+		function fileUpload(HelpersService){
+			return {
+				restrict: 'A',
+				scope:{
+					fileUpload:'='
+				},
+				link: function(scope, element, attrs) {
 					element.bind('change', function(){
 						var file = element[0].files[0];
 						HelpersService
 							.upload(file)
 							.then(function(response){
-								//return url file uploaded
-								modelSetter(scope, response.url);
+								scope.fileUpload = response.url;
 							})
 							.catch(function(response){
 								console.log(response);
