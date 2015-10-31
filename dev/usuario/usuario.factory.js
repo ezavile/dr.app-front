@@ -14,8 +14,8 @@
 				usuarioActual = $sessionStorage.get('usuarioActual') || undefined;
 			}
 
-			Usuario.tipo = function(){
-				return usuarioActual.tipo;
+			Usuario.tipoUsuario = function(){
+				return usuarioActual.tipoUsuario;
 			}
 
 			Usuario.isLogeado = function(){

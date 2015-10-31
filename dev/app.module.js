@@ -92,11 +92,11 @@
 			var state = toState.name.split(".");
 			state = state[0];
 			if(usuario.isLogeado()){
-				if(state === 'doctor' && usuario.tipo() !== 'doctor'){
+				if(state === 'doctor' && usuario.tipoUsuario() !== 'doctor'){
 					$state.go('usuario.principal');
 					event.preventDefault();
 				}
-				if(state === 'paciente' && usuario.tipo() !== 'paciente'){
+				if(state === 'paciente' && usuario.tipoUsuario() !== 'paciente'){
 					$state.go('usuario.principal');
 					event.preventDefault();
 				}

@@ -11,12 +11,11 @@
 			var usuario = UsuarioFactory;
 
 			if(usuario.isLogeado()){
-					console.log(usuario.tipo())
 				header[0].innerHTML = " ";
-				if(usuario.tipo() == 'doctor'){
+				if(usuario.tipoUsuario() == 'doctor'){
 					header.append($compile("<header-doctor class='Header-perfil' collapse-header-menu />")($scope));
 				}
-				if(usuario.tipo() == 'paciente'){
+				if(usuario.tipoUsuario() == 'paciente'){
 					header.append($compile("<header-paciente class='Header-perfil' collapse-header-menu />")($scope));
 				}
 			} else {
