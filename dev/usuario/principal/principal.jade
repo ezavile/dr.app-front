@@ -1,11 +1,7 @@
 section.Principal
 	form
 		p ¡Encuentra de la manera más fácil a tu médico por especialidad!
-		select
-			option Cardiología
-			option Valor 2
-			option Valor 3
-			option Valor 4
+		select(ng-model="especialidad" ng-options="option.idEspecialidad as option.especialidad for option in especialidades")
 		button(ui-sref="usuario.listado({especialidad: 'Ginecologo'})") Buscar
 	form
 		p ¡Que enfermedad tienes!

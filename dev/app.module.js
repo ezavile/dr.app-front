@@ -30,7 +30,8 @@
 			})
 				.state('usuario.principal',{
 					url: '/',
-					templateUrl: "./usuario/principal/principal.html"
+					templateUrl: "./usuario/principal/principal.html",
+					controller: 'PrincipalController'
 				})
 				.state('usuario.listado',{
 					url: '/doctores/:especialidad',
