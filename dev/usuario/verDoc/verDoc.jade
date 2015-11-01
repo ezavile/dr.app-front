@@ -18,7 +18,7 @@ section(class="VerDoc")
 				li
 					i(class="icon-inbox")
 					span Escribir mensaje
-				li(popup-add="<comentarios-doc />")
+				li(popup-add="<comentarios-doc comentarios='doctor.comentarios'/>")
 					i(class="icon-comment")
 					span Comentarios
 				li(ng-click="doctor.agendarCita()" popup-add="<agendar-cita />")
