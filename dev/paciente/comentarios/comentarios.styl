@@ -2,15 +2,12 @@
 	flex-flow: column;
 	& > *
 		width: 60%;
-		max-width: 700px;
+		max-width: 500px;
 	&-content
-		overflow-y: scroll !important;
-		height: 70%;
 		position: relative;
 	&-comentarios
 		&-item
 			display: flex;
-			margin: 2.5em 0 0;
 			align-items: center;
 			position: relative;
 			padding-bottom: 1em;
@@ -37,7 +34,13 @@
 		display: flex;
 		justify-content: space-between;
 		margin-top: 2em;
+		margin-bottom 1em
+		form
+			width: 100%;
 		textarea
+			width: 100%;
 			flex-grow: 1;
+			margin-bottom 1em
 		button
+			float right
 			margin-left: 1em;

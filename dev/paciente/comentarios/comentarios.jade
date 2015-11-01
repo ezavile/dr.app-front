@@ -1,13 +1,15 @@
 div(class="Popup ComentariosDoc" popup-close)
-	form(class="ComentariosDoc-content")
-		div(class="Popup-content")
+	div(class="Popup-content")
+		article(class="ComentariosDoc-content")
 			h3 <span>({{comentarios.length}})</span> Comentarios
 			section(class="ComentariosDoc-comentarios")
-				article(ng-repeat="comentario in comentarios" class="ComentariosDoc-comentarios-item")
+				article(ng-repeat="comentario in comentarios track by $index" class="ComentariosDoc-comentarios-item")
 					figure(style="background-image: url({{comentario.paciente.imgPerfil}})")
 					p {{comentario.comentario}}
 					p(class="ComentariosDoc-comentarios-item-detail") {{comentario.paciente.nombre}} - {{comentario.fecha | datetime}}
 					{{usuario.isLogeado()}}
 	section(class="ComentariosDoc-new" ng-if="usuarioActual.tipoUsuario === 'paciente'")
-		textarea(ng-model="$parent.comentario")
-		button(ng-click="addComentario()") Enviar
+		form(name="ComentarioForm" ng-submit="ComentarioForm.$valid && addComentario()")
+			div(ng-class="{'u-input-required': ComentarioForm.comentario.$error.required}")
+				textarea(ng-model="$parent.comentario" name="comentario" required)
+			button(ng-class="{'u-disabled': !ComentarioForm.$valid}") Enviar
