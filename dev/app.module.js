@@ -38,10 +38,10 @@
 					templateUrl: './usuario/listado/listado.html',
 					controller: 'UsuarioListadoController'
 				})
-				.state('usuario.perfil',{
-					url: '/doc/:id',
-					templateUrl: './usuario/perfil/perfil.html',
-					controller: 'UsuarioPerfilController'
+				.state('usuario.verDoc',{
+					url: '/doc/:doctor',
+					templateUrl: './usuario/verDoc/verDoc.html',
+					controller: 'UsuarioVerDocController'
 				})
 
 			/************ DOC ************************/
@@ -91,12 +91,18 @@
 			//validando rutas segun el usuario logeado
 			var state = toState.name.split(".");
 			state = state[0];
+
 			if(usuario.isLogeado()){
-				if(state === 'doctor' && usuario.tipoUsuario() !== 'doctor'){
+				if(usuario.isLogeado() && state === 'doctor' && usuario.tipoUsuario() !== 'doctor'){
 					$state.go('usuario.principal');
 					event.preventDefault();
 				}
-				if(state === 'paciente' && usuario.tipoUsuario() !== 'paciente'){
+				if(usuario.isLogeado() && state === 'paciente' && usuario.tipoUsuario() !== 'paciente'){
+					$state.go('usuario.principal');
+					event.preventDefault();
+				}
+			} else {
+				if(state != 'usuario'){
 					$state.go('usuario.principal');
 					event.preventDefault();
 				}

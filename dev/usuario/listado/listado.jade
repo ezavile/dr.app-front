@@ -1,5 +1,5 @@
 section.Listado
-	div.Card(ng-repeat="doctor in doctores" ui-sref="doctor.perfil({id: doctor.doctor})")
+	div.Card(ng-repeat="doctor in doctores" ui-sref="usuario.verDoc({doctor: doctor.doctor})")
 		figure(style="background-image: url({{doctor.imgPerfil}})", class="Card-img")
 		div.u-padding
 			h3.Card-nombre {{doctor.nombre}}

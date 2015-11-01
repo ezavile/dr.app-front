@@ -1,0 +1,71 @@
+.VerDoc
+	//padding-bottom: 2em;
+	&-map
+		position: relative;
+		background: gray;
+		z-index: 3;
+		.VerDoc-profilePic
+			position: absolute;
+			top: 12em;
+			left: 3em;
+			display: flex;
+			align-items: center;
+			&-imgPerfil
+				width: 8em;
+				height: 8em;
+				background-size: cover;
+				background-position: top center;
+				border-radius: 3px;
+				border: 5px solid white;
+				boxShadow();
+			&-name
+				padding: .5em;
+				color: $morado;
+		&-direccion
+			position: absolute;
+			right: 1em;
+			top: 1em;
+			width: 15em;
+			background: rgba($black,0.5);
+			color: white;
+			padding .5em;
+	&-menu
+		position relative
+		z-index: 2
+		padding-left: 13em;
+		padding-right: 1em;
+		boxShadow();
+		ul
+			display: flex;
+			li
+				display: flex;
+				align-items: center;
+				border-left: 1px solid #e9eaed;
+				border-right: 1px solid #e9eaed;
+				font-size: .8em;
+				cursor: pointer;
+				padding: 1em;
+				i
+					margin-right: .5em;
+					color: #6a7180;
+				&:hover
+					background: #f6f7f8;
+	&-content
+		display: flex;
+		&-gallery
+			ul
+				width: 25em;
+				height: 15em;
+				figure
+					background-size: cover;
+					background-position: top center;
+					background-repeat: no-repeat;
+					width: 100%;
+					height: 15em;
+		&-servicios
+			padding: 2em;
+			h2
+				margin: 0 0 1em;
+				color: $azul;
+			p
+				line-height: 1.5em;

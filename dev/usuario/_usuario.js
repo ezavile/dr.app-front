@@ -5,5 +5,5 @@ require('./header/_header');
 require('./principal/_principal');
 require('./listado/_listado');
 require('./login/_login');
-require('./perfil/_perfil');
+require('./verDoc/_verDoc');
 require('./registro/_registro');

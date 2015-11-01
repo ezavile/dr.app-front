@@ -1,0 +1,35 @@
+section(class="VerDoc")
+	article(class="VerDoc-map")
+		map(center="{{doctor.coordenadas}}", zoom="18")
+			marker(position="{{doctor.coordenadas}}")
+		section(class="VerDoc-profilePic")
+			figure(class="VerDoc-profilePic-imgPerfil", style="background-image:url({{doctor.imgPerfil}})")
+			div(class="VerDoc-profilePic-name")
+				h3 {{doctor.nombre}}
+				h3 ({{doctor.doctor}})
+		section(class="VerDoc-map-direccion")
+			p {{doctor.direccion}}
+	article(class="VerDoc-menu")
+		nav
+			ul
+				li
+					i(class="icon-phone")
+					a(href="tel:-52{{doctor.telefono}}") {{doctor.telefono}}
+				li
+					i(class="icon-inbox")
+					span Escribir mensaje
+				li(popup-add="<comentarios-doc />")
+					i(class="icon-comment")
+					span Comentarios
+				li(ng-click="doctor.agendarCita()" popup-add="<agendar-cita />")
+					i(class="icon-calendar")
+					span Agendar cita
+	article(class="VerDoc-content")
+		article(class="VerDoc-content-gallery")
+			ul(rn-carousel class="image" rn-carousel-auto-slide)
+				li(ng-repeat="img in galeria track by $index")
+					div(class="layer")
+						figure(style="background-image: url({{img}});")
+		article(class="VerDoc-content-servicios")
+			h2 Servicios
+			p {{doctor.servicios}}
