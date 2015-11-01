@@ -91,13 +91,14 @@
 			//validando rutas segun el usuario logeado
 			var state = toState.name.split(".");
 			state = state[0];
+			var usuarioActual = usuario.getStatus();
 
-			if(usuario.isLogeado()){
-				if(usuario.isLogeado() && state === 'doctor' && usuario.tipoUsuario() !== 'doctor'){
+			if(usuarioActual){
+				if(state === 'doctor' && usuarioActual.tipoUsuario !== 'doctor'){
 					$state.go('usuario.principal');
 					event.preventDefault();
 				}
-				if(usuario.isLogeado() && state === 'paciente' && usuario.tipoUsuario() !== 'paciente'){
+				if(state === 'paciente' && usuarioActual.tipoUsuario !== 'paciente'){
 					$state.go('usuario.principal');
 					event.preventDefault();
 				}

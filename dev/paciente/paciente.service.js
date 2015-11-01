@@ -25,8 +25,27 @@
 			return deferred.promise;
 		}
 
+		function addComentario(req){
+			var deferred = $q.defer();
+			var req = angular.fromJson(req);
+
+			$http
+				.post(URL.URL_API_REST + 'doctor/comentario', req)
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
+
 		return {
-			addPaciente: addPaciente
+			addPaciente: addPaciente,
+			addComentario: addComentario
 		}
 	}
 

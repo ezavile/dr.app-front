@@ -7,6 +7,7 @@ div(class="Popup ComentariosDoc" popup-close)
 					figure(style="background-image: url({{comentario.paciente.imgPerfil}})")
 					p {{comentario.comentario}}
 					p(class="ComentariosDoc-comentarios-item-detail") {{comentario.paciente.nombre}} - {{comentario.fecha | datetime}}
-	section(class="ComentariosDoc-new")
-		textarea
-		button Enviar
+					{{usuario.isLogeado()}}
+	section(class="ComentariosDoc-new" ng-if="usuarioActual.tipoUsuario === 'paciente'")
+		textarea(ng-model="$parent.comentario")
+		button(ng-click="addComentario()") Enviar

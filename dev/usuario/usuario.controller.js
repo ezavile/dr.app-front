@@ -8,14 +8,14 @@
 
 		function UsuarioController($scope, $compile, UsuarioFactory){ 
 			var header = angular.element(document).find('header');
-			var usuario = UsuarioFactory;
+			var usuarioActual = UsuarioFactory.getStatus();
 
-			if(usuario.isLogeado()){
+			if(usuarioActual){
 				header[0].innerHTML = " ";
-				if(usuario.tipoUsuario() == 'doctor'){
+				if(usuarioActual.tipoUsuario == 'doctor'){
 					header.append($compile("<header-doctor class='Header-perfil' collapse-header-menu />")($scope));
 				}
-				if(usuario.tipoUsuario() == 'paciente'){
+				if(usuarioActual.tipoUsuario == 'paciente'){
 					header.append($compile("<header-paciente class='Header-perfil' collapse-header-menu />")($scope));
 				}
 			} else {
