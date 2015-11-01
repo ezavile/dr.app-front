@@ -1,33 +1,6 @@
 section.Listado
-	div.Perfil(ui-sref="doctor.perfil({id: 3})")
-		img(src="img/doctor1.jpg", class="Perfil-img")
-		h3.Perfil-nombre Nombre doctor
-		p.Perfil-especialidad especialidad
-	div.Perfil
-		img(src="img/doctor1.jpg", class="Perfil-img")
-		h3.Perfil-nombre Nombre doctor
-		p.Perfil-especialidad especialidad
-	div.Perfil
-		img(src="img/doctor1.jpg", class="Perfil-img")
-		h3.Perfil-nombre Nombre doctor
-		p.Perfil-especialidad especialidad
-	div.Perfil
-		img(src="img/doctor1.jpg", class="Perfil-img")
-		h3.Perfil-nombre Nombre doctor
-		p.Perfil-especialidad especialidad
-	div.Perfil
-		img(src="img/doctor1.jpg", class="Perfil-img")
-		h3.Perfil-nombre Nombre doctor
-		p.Perfil-especialidad especialidad
-	div.Perfil
-		img(src="img/doctor1.jpg", class="Perfil-img")
-		h3.Perfil-nombre Nombre doctor
-		p.Perfil-especialidad especialidad
-	div.Perfil
-		img(src="img/doctor1.jpg", class="Perfil-img")
-		h3.Perfil-nombre Nombre doctor
-		p.Perfil-especialidad especialidad
-	div.Perfil
-		img(src="img/doctor1.jpg", class="Perfil-img")
-		h3.Perfil-nombre Nombre doctor
-		p.Perfil-especialidad especialidad
+	div.Card(ng-repeat="doctor in doctores" ui-sref="doctor.perfil({id: doctor.doctor})")
+		figure(style="background-image: url({{doctor.imgPerfil}})", class="Card-img")
+		div.u-padding
+			h3.Card-nombre {{doctor.nombre}}
+			p.Card-especialidad {{doctor.especialidad.especialidad}}

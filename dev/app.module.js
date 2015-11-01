@@ -34,7 +34,7 @@
 					controller: 'PrincipalController'
 				})
 				.state('usuario.listado',{
-					url: '/doctores/:especialidad',
+					url: '/doctores/:tipoListado/:search',
 					templateUrl: './usuario/listado/listado.html',
 					controller: 'UsuarioListadoController'
 				})

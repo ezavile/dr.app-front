@@ -43,9 +43,33 @@
 			return deferred.promise;
 		}
 
+
+		function doctoresByEspecialidad(idEspecialidad){
+			var deferred = $q.defer();
+
+			var especialidad = {
+				"idEspecialidad": idEspecialidad
+			}
+			especialidad = angular.fromJson(especialidad);
+			console.log(especialidad);
+			$http
+				.post(URL.URL_API_REST + 'doctoresByEspecialidad', especialidad)
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
+
 		return {
 			addDoctor: addDoctor,
-			getEspecialidades: getEspecialidades
+			getEspecialidades: getEspecialidades,
+			doctoresByEspecialidad: doctoresByEspecialidad
 		}
 	}
 

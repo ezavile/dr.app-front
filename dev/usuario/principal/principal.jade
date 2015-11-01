@@ -2,25 +2,25 @@ section.Principal
 	form
 		p ¡Encuentra de la manera más fácil a tu médico por especialidad!
 		select(ng-model="especialidad" ng-options="option.idEspecialidad as option.especialidad for option in especialidades")
-		button(ui-sref="usuario.listado({especialidad: 'Ginecologo'})") Buscar
+		button(ui-sref="usuario.listado({tipoListado: 'especialidad', search: especialidad})") Buscar
 	form
 		p ¡Que enfermedad tienes!
 		input(type="text", placeholder="Ej. epilepsia")
 		button(ui-sref="doctor.perfil") Buscar
 section.Destacados
-	div(class="Perfil")
-		img(src="img/doctor1.jpg", class="Perfil-img" ui-sref="paciente.perfil")
-		h3.Perfil-nombre Nombre doctor
-		p.Perfil-especialidad especialidad
-	div(class="Perfil")
-		img(src="img/doctor1.jpg", class="Perfil-img" ui-sref="usuario.perfil")
-		h3.Perfil-nombre Nombre doctor
-		p.Perfil-especialidad especialidad
-	div(class="Perfil")
-		img(src="img/doctor1.jpg", class="Perfil-img")
-		h3.Perfil-nombre Nombre doctor
-		p.Perfil-especialidad especialidad
-	div(class="Perfil")
-		img(src="img/doctor1.jpg", class="Perfil-img")
-		h3.Perfil-nombre Nombre doctor
-		p.Perfil-especialidad especialidad
+	div(class="Card")
+		img(src="img/doctor1.jpg", class="Card-img" ui-sref="paciente.perfil")
+		h3.Card-nombre Nombre doctor
+		p.Card-especialidad especialidad
+	div(class="Card")
+		img(src="img/doctor1.jpg", class="Card-img" ui-sref="usuario.perfil")
+		h3.Card-nombre Nombre doctor
+		p.Card-especialidad especialidad
+	div(class="Card")
+		img(src="img/doctor1.jpg", class="Card-img")
+		h3.Card-nombre Nombre doctor
+		p.Card-especialidad especialidad
+	div(class="Card")
+		img(src="img/doctor1.jpg", class="Card-img")
+		h3.Card-nombre Nombre doctor
+		p.Card-especialidad especialidad

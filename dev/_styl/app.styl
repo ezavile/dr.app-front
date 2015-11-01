@@ -1,12 +1,12 @@
 @import 'nib'
 @import './lib/normalize'
+@import './reset'
 @import './lib/angular-carousel.css'
 @import './fonts/fonts.css'
 @import './variables'
 @import './mixins'
 @import './popup'
 @import './header'
-@import './perfil'
 @import './admin'
 @import './validateForms'
 
@@ -79,6 +79,8 @@ label.txtArea
 	left: 1em;
 	right: 1em;
 	margin: 0 auto;
+.u-padding
+	padding .5em
 .Contenedor
 	width: 80%;
 	max-width: 900px;
@@ -151,6 +153,18 @@ label.txtArea
 				content: "\e901";
 				color: white;
 				font-size: 1.5em;
+.Card
+	margin: 1em;
+	cursor: pointer;
+	text-align: center;
+	boxShadow();
+	width: 10em;
+	background: white;
+	&-img
+		width: 100%;
+		bgCover('');
+		height: 10em;
+		max-height: 8em;
 @import '../usuario/usuario'
 @import '../paciente/paciente'
 //@import '../doctor/doctor'

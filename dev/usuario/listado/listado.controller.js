@@ -2,19 +2,26 @@
 	angular.module('drApp.Usuario')
 	.controller('UsuarioListadoController', UsuarioListadoController);
 
-	UsuarioListadoController.$inject=['$stateParams', 'DoctorFactory', 'DoctorService'];
+	UsuarioListadoController.$inject=['$scope','$stateParams', 'DoctorService'];
 
-	function UsuarioListadoController($stateParams, DoctorFactory, DoctorService){
-		//console.log($stateParams.especialidad);
+	function UsuarioListadoController($scope, $stateParams, DoctorService){
+		var tipoListado = $stateParams.tipoListado;
+		$scope.doctores = [];
 
-		/*console.log(DoctorFactory.getDoctores())
-		console.log("Primer insercion")
-		DoctorFactory.addDoctor({'nombre':'Alex', 'edad': 16})
-		console.log(DoctorFactory.getDoctores())*/
+		if(tipoListado === 'especialidad'){
+			var idEspecialidad = $stateParams.search;
 
-		//console.log(DoctorService.getDoctores())
-		DoctorService.addDoctor({'nombre':'Alex', 'edad': 16})
-		//console.log(DoctorService.getDoctores())
+			DoctorService.doctoresByEspecialidad(idEspecialidad)
+				.then(function(res){
+					$scope.doctores = res;
+				})
+				.catch(function(res){
+					console.log(res);
+				});
+		}
+		if(tipoListado === 'enfermedad'){
+			var enfermedad = $stateParams.search; 
+		}
 	
 	}
 
