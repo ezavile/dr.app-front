@@ -7,7 +7,8 @@ angular
 	function headerPaciente(){
 		return{
 			restrict: 'E', 
-			templateUrl: './paciente/header/header.html'
+			templateUrl: './paciente/header/header.html',
+			controller: 'PacienteHeaderController'
 		}
 	}
 

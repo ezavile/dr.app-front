@@ -1,7 +1,7 @@
-h2 Bienvenido Edgar Zavala
+h2 Bienvenido {{paciente.nombre}}
 div
-	figure(class="Header-perfil-img" style="background-image:url(./img/perfil_doc.jpg)")
-	span(class="Header-perfil-user") ezavile
+	figure(class="Header-perfil-img" style="background-image:url({{paciente.imgPerfil}})")
+	span(class="Header-perfil-user") {{paciente.paciente}}
 	i(class="Header-perfil-config icon-settings")
 	nav(class="Header-perfil-menu")
 		ul
