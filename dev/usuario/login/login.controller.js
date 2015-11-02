@@ -12,17 +12,18 @@
 
 			$scope.usr = {};
 			$scope.login = function(){
-				LoginService.login($scope.usr)
-				.then(function(res){
-					if(res.tipoUsuario){
-						usuario.setStatus(res);
-						$state.reload();
-						helper.popupClose();
-					}
-				})
-				.catch(function(res){
-					console.log(res);
-				});
+				LoginService
+					.login($scope.usr)
+					.then(function(res){
+						if(res.tipoUsuario){
+							usuario.setStatus(res);
+							$state.reload();
+							helper.popupClose();
+						}
+					})
+					.catch(function(res){
+						console.log(res);
+					});
 			}
 		}
 

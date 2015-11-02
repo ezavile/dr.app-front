@@ -7,27 +7,20 @@
 	bottom:0;
 	display: flex;
 	justify-content:center;
-	z-index: 10;
-	& > *
-		align-self: center;
-	form
+	z-index: 100;
+	align-items: center;
+	flex-direction: column;
+	padding: 1em;
+	&--contentScroll
+		width: 100%;
+		max-width: 35em;
+		background: rgba(white, .9);
+		border-radius: 5px;
+		boxShadow();
 		overflow-y: auto;
-		max-width: 40em;
-		h3
-			margin: 0 0 1em;
-		div
-			margin-bottom: 1.5em;
-			label
-				display: inline-block;
-				width: 5em;
-				margin-right: 1em;
-				text-align: right;
-			> input
-			> select
-			> textarea
-				width: 14em;
-		button
-			float: right;
-		button + button
-			margin-right: 1em;
-			background: $naranja;
+		overflow-x: hidden;
+		text-align: center;
+		padding: .5em;
+		&-large
+			@extend .Popup--contentScroll
+			max-width: 50em;
