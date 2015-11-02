@@ -1,0 +1,6 @@
+section(class="Popup" popup-close)
+	form(name="MensajeForm" class="u-form-bg Popup--contentScroll" ng-submit="MensajeForm.$valid && addMensaje()")
+		h3 Escribir Mensaje
+		div(ng-class="{'u-input-required': MensajeForm.mensaje.$error.required}")
+			textarea(ng-model="$parent.mensaje" name="mensaje" required style="width: 100%;")
+		button(ng-class="{'u-disabled': !MensajeForm.$valid}") Enviar

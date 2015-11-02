@@ -30,7 +30,25 @@
 			var req = angular.fromJson(req);
 
 			$http
-				.post(URL.URL_API_REST + 'doctor/comentario', req)
+				.post(URL.URL_API_REST + 'paciente/comentario', req)
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
+
+		function addMensaje(req){
+			var deferred = $q.defer();
+			var req = angular.fromJson(req);
+
+			$http
+				.post(URL.URL_API_REST + 'paciente/mensaje', req)
 				.success(function(res) {
 					//console.log(res);
 					deferred.resolve(res);
@@ -45,7 +63,8 @@
 
 		return {
 			addPaciente: addPaciente,
-			addComentario: addComentario
+			addComentario: addComentario,
+			addMensaje: addMensaje
 		}
 	}
 

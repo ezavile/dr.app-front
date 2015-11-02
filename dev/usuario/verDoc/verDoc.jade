@@ -15,7 +15,7 @@ section(class="VerDoc")
 				li
 					i(class="icon-phone")
 					a(href="tel:-52{{doctor.telefono}}") {{doctor.telefono}}
-				li
+				li(popup-add="<mensaje-doc />")
 					i(class="icon-inbox")
 					span Escribir mensaje
 				li(popup-add="<comentarios-doc comentarios='doctor.comentarios'/>")
