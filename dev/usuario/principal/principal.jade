@@ -1,12 +1,14 @@
 section.Principal
-	form
+	form(class="u-form-bg")
 		p ¡Encuentra de la manera más fácil a tu médico por especialidad!
-		select(ng-model="especialidad" ng-options="option.idEspecialidad as option.especialidad for option in especialidades")
-		button(ui-sref="usuario.listado({tipoListado: 'especialidad', search: especialidad})") Buscar
-	form
+		div.u-labelInput
+			select(ng-model="especialidad" ng-options="option.idEspecialidad as option.especialidad for option in especialidades")
+			button(ui-sref="usuario.listado({tipoListado: 'especialidad', search: especialidad})") Buscar
+	form(class="u-form-bg")
 		p ¡Que enfermedad tienes!
-		input(type="text", placeholder="Ej. epilepsia")
-		button(ui-sref="doctor.perfil") Buscar
+		div.u-labelInput
+			input(type="text", placeholder="Ej. epilepsia")
+			button(ui-sref="doctor.perfil") Buscar
 section.Destacados
 	div(class="Card")
 		img(src="img/doctor1.jpg", class="Card-img" ui-sref="paciente.perfil")

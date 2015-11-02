@@ -1,0 +1,47 @@
+input,
+select,
+textarea
+	padding: .3em;
+	border: 1px solid $azul;
+	background: white;
+	color: gray;
+textarea
+	height: 5em;
+	resize: none;
+button
+	background: $azul;
+	border: 0;
+	border-radius: 8px;
+	padding: .5em 1em;
+	color: white !important;
+	outline: none;
+.u-form-white
+	background: rgba(white, .9);
+	boxShadow();
+form
+	padding: 1em;
+	border-radius: 10px;
+	text-align: center;
+	h3
+		color: $morado;
+		margin: 0 0 1em;
+	button[type="cancel"]
+		background: $naranja;
+	label.txtArea
+		vertical-align: top;
+	div
+		margin-bottom: 1.5em;
+		label
+			display: inline-block;
+			width: 5em;
+			margin-right: 1em;
+			text-align: right;
+		> input
+		> select
+		> textarea
+			width: 14em;
+	button
+		float: right;
+	button + button
+		margin-right: 1em;
+		background: $naranja;

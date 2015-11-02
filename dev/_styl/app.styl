@@ -11,13 +11,14 @@
 @import './validateForms'
 
 //GENERALRES
-.flex
+.u-labelInput
 	display: flex;
 	justify-content: center;
-	margin-bottom: 0 !important;
 *
 	box-sizing: border-box;
 	outline: none;
+.popup-on
+	overflow: hidden;
 body
 	color: #16210b;
 	font-size: 16px;
@@ -29,16 +30,34 @@ a:active
 	text-decoration: none;
 	outline: none;
 	color: inherit;
-
+.u-form-bg
+	background: rgba(white, .9);
+	border-radius: 5px;
+	boxShadow();
+h3
+	color: $morado;
+	margin: 0 0 1em;
 form
 	padding: 1em;
-	background: rgba(white, .9);
-	border-radius: 10px;
-	boxShadow();
 	text-align: center;
-	h3
-		color: $morado;
-
+	div
+		margin-bottom: 1.5em;
+		&:last-child
+			margin 0
+		label
+			display: inline-block;
+			width: 5em;
+			margin-right: 1em;
+			text-align: right;
+		> input
+		> select
+		> textarea
+			width: 14em;
+	button
+		float: right;
+	button + button
+		margin-right: 1em;
+		background: $naranja;
 li
 	list-style: none;
 
@@ -64,8 +83,6 @@ button[type="cancel"]
 label.txtArea
 	vertical-align: top;
 
-.popup-on
-	overflow: hidden;
 .u-mapa
 	height: 15em;
 	width: 100%;

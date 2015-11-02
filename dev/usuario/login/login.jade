@@ -1,5 +1,5 @@
-div(class="Popup Login" popup-close)
-	form(name="loginForm" ng-submit="loginForm.$valid && login()")
+section(class="Popup" popup-close)
+	form(class="u-form-bg" name="loginForm" ng-submit="loginForm.$valid && login()")
 		h3 Iniciar Sesión
 		div(ng-class="{'u-input-required': loginForm.usuario.$error.required}")
 			label Usuario
