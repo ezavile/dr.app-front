@@ -25,7 +25,8 @@
 			.state('usuario', {
 				abstract: true,
 				url: '',
-				templateUrl: './usuario/usuario.html'
+				templateUrl: './usuario/usuario.html',
+				controller: 'UsuarioController'
 			})
 				.state('usuario.principal',{
 					url: '/',
