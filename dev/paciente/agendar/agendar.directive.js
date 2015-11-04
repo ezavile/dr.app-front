@@ -5,7 +5,8 @@
 
 	function agendarCita(){
 		return {
-			templateUrl: './paciente/agendar/agendar.html'
+			templateUrl: './paciente/agendar/agendar.html',
+			controller: 'PacienteAgendarController'
 		}
 	}
 

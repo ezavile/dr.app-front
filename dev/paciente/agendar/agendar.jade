@@ -1,14 +1,16 @@
 div(class="Popup" popup-close)
-	form.u-form-bg
+	form(class="u-form-bg" name="AgendarForm" ng-submit="AgendarForm.$valid && addCita()")
 		div
 			h3 Agenda tu cíta
-			div
+			div(ng-class="{'u-input-required': AgendarForm.fecha.$error.required}")
 				label Fecha
-				input(type="date")
-			div
+				input(type="date" name="fecha" ng-model="fecha" required)
+			div(style="position:relative")
 				label Hora
-				input(type="time")
-			div
-				label Asunto
-				input(type="text")
-			button(type="submit") Agendar
+				select(ng-model="hora")
+					option(ng-repeat="hra in horas" value="{{hra}}") {{hra}}:00</span>
+				span(style="position: absolute; top:100%; left: 0; right: 0; text-align:right; color: gray; font-size: .8em;") Solo se muestran las horas disponibles
+			div(ng-class="{'u-input-required': AgendarForm.asunto.$error.required}")
+				label.txtArea Asunto
+				textarea(name="asunto" ng-model="asunto" required)
+			button(ng-class="{'u-disabled': !AgendarForm.$valid}")  Agendar
