@@ -9,6 +9,7 @@
 			$scope.usuarioActual = UsuarioFactory.getStatus();
 			var doctor = DoctorFactory.getStatus();
 			var helper = HelpersFactory;
+			$scope.msjHorasDisponibles = "Solo se muestran las horas disponibles.";
 
 			$scope.$watch('fecha', function(date){
 				$scope.horas = ['9','10','11','12','13','14','15','16','17','18'];
@@ -35,6 +36,13 @@
 						return hora!=hra;
 					});
 				});
+
+				if($scope.horas.length ==0 ){
+					$scope.msjHorasDisponibles = "Ya no hay horas disponibles.";
+				} else {
+					$scope.msjHorasDisponibles = "Solo se muestran las horas disponibles.";
+				}
+
 				$scope.hora = $scope.horas[0];
 			}
 

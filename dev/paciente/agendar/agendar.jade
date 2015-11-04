@@ -7,9 +7,9 @@ div(class="Popup" popup-close)
 				input(type="date" name="fecha" ng-model="fecha" required)
 			div(style="position:relative")
 				label Hora
-				select(ng-model="hora")
+				select(ng-model="hora" ng-disabled="horas.length == 0")
 					option(ng-repeat="hra in horas" value="{{hra}}") {{hra}}:00</span>
-				span(style="position: absolute; top:100%; left: 0; right: 0; text-align:right; color: gray; font-size: .8em;") Solo se muestran las horas disponibles
+				span(style="position: absolute; top:100%; left: 0; right: 0; text-align:right; color: gray; font-size: .8em;") {{msjHorasDisponibles}}
 			div(ng-class="{'u-input-required': AgendarForm.asunto.$error.required}")
 				label.txtArea Asunto
 				textarea(name="asunto" ng-model="asunto" required)
