@@ -15,13 +15,13 @@ section(class="VerDoc")
 				li
 					i(class="icon-phone")
 					a(href="tel:-52{{doctor.telefono}}") {{doctor.telefono}}
-				li(popup-add="<mensaje-doc />")
+				li(popup-add="<mensaje-doc />" ng-class="{'u-disabled': !paciente}")
 					i(class="icon-inbox")
 					span Escribir mensaje
 				li(popup-add="<comentarios-doc comentarios='doctor.comentarios'/>")
 					i(class="icon-comment")
 					span Comentarios
-				li(ng-click="doctor.agendarCita()" popup-add="<agendar-cita />")
+				li(ng-click="doctor.agendarCita()" popup-add="<agendar-cita />" ng-class="{'u-disabled': !paciente}")
 					i(class="icon-calendar")
 					span Agendar cita
 	article(class="VerDoc-content")

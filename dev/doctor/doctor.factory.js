@@ -9,17 +9,14 @@
 		function DoctorFactory($sessionStorage){
 			var Doctor = {};
 
-			Doctor.getStatus = function(){
+			Doctor.getDoctor = function(){
 				return $sessionStorage.get('doctor') || undefined;
 			}
 
-			Doctor.setStatus = function(doc){
+			Doctor.setDoctor = function(doc){
 				$sessionStorage.put('doctor', doc);
 			}
 
-			Doctor.remove = function(){
-				$sessionStorage.remove('doctor');
-			}
 
 			return Doctor;
 		}

@@ -9,20 +9,17 @@
 		function UsuarioFactory($sessionStorage){
 			var Usuario = {};
 
-
-
-			Usuario.getStatus = function(){
-				return $sessionStorage.get('usuarioActual') || undefined;
+			Usuario.setTipoUsuario = function(tipoUsuario){
+				$sessionStorage.put('tipoUsuario', tipoUsuario);
 			}
-
-			Usuario.setStatus = function(usr){
-				$sessionStorage.put('usuarioActual', usr);
+			Usuario.getTipoUsuario = function(tipoUsuario){
+				return $sessionStorage.get('tipoUsuario') || undefined;
 			}
-
-			Usuario.logout = function(){
+			Usuario.logout = function(tipoUsuario){
 				$sessionStorage.empty();
 			}
 
 			return Usuario;
+
 		}
 })();

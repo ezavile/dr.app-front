@@ -7,7 +7,7 @@ section(class="Popup" popup-close)
 					figure(style="background-image: url({{comentario.paciente.imgPerfil}})")
 					p {{comentario.comentario}}
 					p(class="ComentariosDoc-comentarios-item-detail") {{comentario.paciente.nombre}} - {{comentario.fecha | datetime}}
-	article(class="ComentariosDoc-new" ng-if="usuarioActual.tipoUsuario === 'paciente'")
+	article(class="ComentariosDoc-new" ng-if="paciente")
 		form(name="ComentarioForm" ng-submit="ComentarioForm.$valid && postComentario()")
 			div(ng-class="{'u-input-required': ComentarioForm.comentario.$error.required}")
 				textarea(ng-model="$parent.comentario" name="comentario" required)

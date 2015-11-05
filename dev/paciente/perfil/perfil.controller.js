@@ -4,20 +4,20 @@
 		.module('drApp.Paciente')
 		.controller('PacientePerfilController', PacientePerfilController);
 
-		PacientePerfilController.$inject = ['$state', '$scope', 'UsuarioFactory', 'PacienteService'];
+		PacientePerfilController.$inject = ['$state', '$scope', 'PacienteFactory', 'PacienteService'];
 
-		function PacientePerfilController($state, $scope, UsuarioFactory, PacienteService){
-			$scope.paciente = angular.copy(UsuarioFactory.getStatus());
+		function PacientePerfilController($state, $scope, PacienteFactory, PacienteService){
+			$scope.paciente = angular.copy(PacienteFactory.getInfo());
 
 			$scope.reset = function(){
-				$scope.paciente = angular.copy(UsuarioFactory.getStatus());
+				$scope.paciente = angular.copy(PacienteFactory.getInfo());
 			}
 
-			$scope.update = function(){
+			$scope.putPaciente = function(){
 				PacienteService
-					.updatePaciente($scope.paciente)
+					.putPaciente($scope.paciente)
 					.then(function(res){
-						UsuarioFactory.setStatus(res);
+						PacienteFactory.setInfo(res);
 						$state.reload();
 					})
 					.catch(function(res){

@@ -3,17 +3,17 @@
 		.module('drApp.Paciente')
 		.controller('PacienteComentariosController', PacienteComentariosController);
 
-		PacienteComentariosController.$inject = ['$scope', 'DoctorFactory', 'UsuarioFactory', 'PacienteService'];
+		PacienteComentariosController.$inject = ['$scope', 'DoctorFactory', 'PacienteFactory', 'PacienteService'];
 
-		function PacienteComentariosController($scope, DoctorFactory, UsuarioFactory, PacienteService){
-			$scope.usuarioActual = UsuarioFactory.getStatus();
-			var doctor = DoctorFactory.getStatus();
+		function PacienteComentariosController($scope, DoctorFactory, PacienteFactory, PacienteService){
+			$scope.paciente = PacienteFactory.getInfo();
+			var doctor = DoctorFactory.getDoctor();
 			//scope comentarios coming from verDoc
 			//$scope.comentarios
 			$scope.postComentario = function(){
-				if($scope.usuarioActual.tipoUsuario === 'paciente'){
+				if($scope.paciente){
 					var req = {
-						'paciente': $scope.usuarioActual.paciente,
+						'paciente': $scope.paciente.paciente,
 						'doctor': doctor.doctor,
 						'comentario': $scope.comentario
 					}
@@ -23,9 +23,9 @@
 						.then(function(res){
 							var comentario = {
 								'paciente': {
-									'paciente':$scope.usuarioActual.paciente,
-									'nombre':$scope.usuarioActual.nombre,
-									'imgPerfil':$scope.usuarioActual.imgPerfil
+									'paciente':$scope.paciente.paciente,
+									'nombre':$scope.paciente.nombre,
+									'imgPerfil':$scope.paciente.imgPerfil
 								},
 								'fecha':res.fecha,
 								'comentario':res.comentario

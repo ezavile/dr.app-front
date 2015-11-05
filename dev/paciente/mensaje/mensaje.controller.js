@@ -3,16 +3,16 @@
 		.module('drApp.Paciente')
 		.controller('PacienteMensajeController', PacienteMensajeController);
 
-		PacienteMensajeController.$inject = ['$scope', 'DoctorFactory', 'UsuarioFactory', 'PacienteService'];
+		PacienteMensajeController.$inject = ['$scope', 'DoctorFactory', 'PacienteFactory', 'PacienteService'];
 
-		function PacienteMensajeController($scope, DoctorFactory, UsuarioFactory, PacienteService){
-			$scope.usuarioActual = UsuarioFactory.getStatus();
-			var doctor = DoctorFactory.getStatus();
+		function PacienteMensajeController($scope, DoctorFactory, PacienteFactory, PacienteService){
+			$scope.paciente = PacienteFactory.getInfo();
+			var doctor = DoctorFactory.getDoctor();
 
 			$scope.postMensaje = function(){
-				if($scope.usuarioActual.tipoUsuario === 'paciente'){
+				if($scope.paciente){
 					var req = {
-						'paciente': $scope.usuarioActual.paciente,
+						'paciente': $scope.paciente.paciente,
 						'doctor': doctor.doctor,
 						'mensaje': $scope.mensaje
 					}

@@ -3,9 +3,9 @@
 		.module('drApp.Usuario')
 		.controller('PrincipalController', PrincipalController);
 
-		PrincipalController.$inject = ['$compile', '$scope', 'DoctorService', 'UsuarioFactory'];
+		PrincipalController.$inject = ['$compile', '$scope', 'DoctorService'];
 
-		function PrincipalController($compile, $scope, DoctorService, UsuarioFactory){
+		function PrincipalController($compile, $scope, DoctorService){
 			//obtener las especialidades
 			DoctorService.getEspecialidades()
 				.then(function(res){

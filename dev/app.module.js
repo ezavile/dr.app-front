@@ -90,20 +90,19 @@
 	run.$inject = ['$rootScope','$state','$stateParams','UsuarioFactory'];
 
 	function run($rootScope, $state, $stateParams, UsuarioFactory) {
-		var usuario = UsuarioFactory;
+		var usuarioActual = UsuarioFactory;
 
 		$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 			//validando rutas segun el usuario logeado
 			var state = toState.name.split(".");
 			state = state[0];
-			var usuarioActual = usuario.getStatus();
 
-			if(usuarioActual){
-				if(state === 'doctor' && usuarioActual.tipoUsuario !== 'doctor'){
+			if(usuarioActual.getTipoUsuario()){
+				if(state === 'doctor' && usuarioActual.getTipoUsuario() !== 'doctor'){
 					$state.go('usuario.principal');
 					event.preventDefault();
 				}
-				if(state === 'paciente' && usuarioActual.tipoUsuario !== 'paciente'){
+				if(state === 'paciente' && usuarioActual.getTipoUsuario() !== 'paciente'){
 					$state.go('usuario.principal');
 					event.preventDefault();
 				}

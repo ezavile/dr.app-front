@@ -3,9 +3,9 @@
 		.module('drApp.Paciente')
 		.controller('PacienteHeaderController', PacienteHeaderController);
 
-		PacienteHeaderController.$inject = ['$scope', 'UsuarioFactory'];
+		PacienteHeaderController.$inject = ['$scope', 'PacienteFactory'];
 
-		function PacienteHeaderController($scope, UsuarioFactory){
-			$scope.paciente = UsuarioFactory.getStatus();
+		function PacienteHeaderController($scope, PacienteFactory){
+			$scope.paciente = PacienteFactory.getInfo();
 		}
 })();

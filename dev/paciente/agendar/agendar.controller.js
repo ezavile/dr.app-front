@@ -3,11 +3,11 @@
 		.module('drApp.Paciente')
 		.controller('PacienteAgendarController', PacienteAgendarController);
 
-		PacienteAgendarController.$inject = ['$scope', 'HelpersFactory', 'DoctorFactory', 'UsuarioFactory', 'PacienteService'];
+		PacienteAgendarController.$inject = ['$scope', 'HelpersFactory', 'DoctorFactory', 'PacienteFactory', 'PacienteService'];
 
-		function PacienteAgendarController($scope, HelpersFactory, DoctorFactory, UsuarioFactory, PacienteService){
-			$scope.usuarioActual = UsuarioFactory.getStatus();
-			var doctor = DoctorFactory.getStatus();
+		function PacienteAgendarController($scope, HelpersFactory, DoctorFactory, PacienteFactory, PacienteService){
+			$scope.paciente = PacienteFactory.getInfo();
+			var doctor = DoctorFactory.getDoctor();
 			var helper = HelpersFactory;
 			$scope.msjHorasDisponibles = "Solo se muestran las horas disponibles.";
 
@@ -47,12 +47,12 @@
 			}
 
 			$scope.postCita = function(){
-				if($scope.usuarioActual.tipoUsuario === 'paciente'){
+				if($scope.paciente){
 					var req = {
 						'fecha': helper.dateYYYYMMDD($scope.fecha),
 						'hora': $scope.hora,
 						'doctor': doctor.doctor,
-						'paciente': $scope.usuarioActual.paciente,
+						'paciente': $scope.paciente.paciente,
 						'asunto': $scope.asunto
 					}
 
