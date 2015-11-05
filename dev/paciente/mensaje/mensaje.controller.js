@@ -9,7 +9,7 @@
 			$scope.usuarioActual = UsuarioFactory.getStatus();
 			var doctor = DoctorFactory.getStatus();
 
-			$scope.addMensaje = function(){
+			$scope.postMensaje = function(){
 				if($scope.usuarioActual.tipoUsuario === 'paciente'){
 					var req = {
 						'paciente': $scope.usuarioActual.paciente,
@@ -18,7 +18,7 @@
 					}
 
 					PacienteService
-						.addMensaje(req)
+						.postMensaje(req)
 						.then(function(res){
 							console.log(res)
 							$scope.comentario = '';

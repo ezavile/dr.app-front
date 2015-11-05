@@ -46,7 +46,7 @@
 				$scope.hora = $scope.horas[0];
 			}
 
-			$scope.addCita = function(){
+			$scope.postCita = function(){
 				if($scope.usuarioActual.tipoUsuario === 'paciente'){
 					var req = {
 						'fecha': helper.dateYYYYMMDD($scope.fecha),
@@ -57,7 +57,7 @@
 					}
 
 					PacienteService
-						.addCita(req)
+						.postCita(req)
 						.then(function(res){
 							console.log(res);
 						})

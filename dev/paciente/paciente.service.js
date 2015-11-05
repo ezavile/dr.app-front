@@ -6,13 +6,13 @@
 
 	function PacienteService($http, $q, URL){
 
-		function addPaciente(paciente){
+		function postPaciente(paciente){
 			var deferred = $q.defer();
 
 			var paciente = angular.fromJson(paciente);
 
 			$http
-				.post(URL.URL_API_REST + 'paciente', paciente)
+				.post(URL.URL_API_REST + 'pacientes', paciente)
 				.success(function(res) {
 					//console.log(res);
 					deferred.resolve(res);
@@ -25,12 +25,12 @@
 			return deferred.promise;
 		}
 
-		function addComentario(req){
+		function postComentario(req){
 			var deferred = $q.defer();
 			var req = angular.fromJson(req);
 
 			$http
-				.post(URL.URL_API_REST + 'paciente/comentario', req)
+				.post(URL.URL_API_REST + 'pacientes/comentarios', req)
 				.success(function(res) {
 					//console.log(res);
 					deferred.resolve(res);
@@ -43,12 +43,12 @@
 			return deferred.promise;
 		}
 
-		function addMensaje(req){
+		function postMensaje(req){
 			var deferred = $q.defer();
 			var req = angular.fromJson(req);
 
 			$http
-				.post(URL.URL_API_REST + 'paciente/mensaje', req)
+				.post(URL.URL_API_REST + 'pacientes/mensajes', req)
 				.success(function(res) {
 					//console.log(res);
 					deferred.resolve(res);
@@ -61,12 +61,12 @@
 			return deferred.promise;
 		}
 
-		function addCita(req){
+		function postCita(req){
 			var deferred = $q.defer();
 			var req = angular.fromJson(req);
 
 			$http
-				.post(URL.URL_API_REST + 'paciente/cita', req)
+				.post(URL.URL_API_REST + 'pacientes/citas', req)
 				.success(function(res) {
 					//console.log(res);
 					deferred.resolve(res);
@@ -80,12 +80,12 @@
 		}
 
 
-		function updatePaciente(req){
+		function putPaciente(req){
 			var deferred = $q.defer();
 			var req = angular.fromJson(req);
 
 			$http
-				.put(URL.URL_API_REST + 'paciente', req)
+				.put(URL.URL_API_REST + 'pacientes', req)
 				.success(function(res) {
 					//console.log(res);
 					deferred.resolve(res);
@@ -100,11 +100,11 @@
 
 		
 		return {
-			addPaciente: addPaciente,
-			addComentario: addComentario,
-			addMensaje: addMensaje,
-			addCita: addCita,
-			updatePaciente: updatePaciente
+			postPaciente: postPaciente,
+			postComentario: postComentario,
+			postMensaje: postMensaje,
+			postCita: postCita,
+			putPaciente: putPaciente
 		}
 	}
 

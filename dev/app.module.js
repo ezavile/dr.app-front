@@ -80,6 +80,10 @@
 					templateUrl: './paciente/perfil/perfil.html',
 					controller: 'PacientePerfilController'
 				})
+				.state('paciente.citas',{
+					url: '/citas',
+					templateUrl: './paciente/citas/citas.html'
+				})
 
 	}
 

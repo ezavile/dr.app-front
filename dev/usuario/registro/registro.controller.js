@@ -21,8 +21,8 @@
 					console.log(res);
 				});
 
-			$scope.addDoctor = function(){ 
-				DoctorService.addDoctor($scope.doctor)
+			$scope.postDoctor = function(){ 
+				DoctorService.postDoctor($scope.doctor)
 					.then(function(res){
 						console.log(res);
 					})
@@ -34,8 +34,8 @@
 			$scope.paciente = {};
 			$scope.paciente.imgPerfil = URL.URL_IMG_PERFIL_DEFAULT;
 
-			$scope.addPaciente = function(){ 
-				PacienteService.addPaciente($scope.paciente)
+			$scope.postPaciente = function(){ 
+				PacienteService.postPaciente($scope.paciente)
 					.then(function(res){
 						console.log(res);
 					})

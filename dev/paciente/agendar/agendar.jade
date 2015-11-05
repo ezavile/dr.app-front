@@ -1,5 +1,5 @@
 div(class="Popup" popup-close)
-	form(class="u-form-bg" name="AgendarForm" ng-submit="AgendarForm.$valid && addCita()")
+	form(class="u-form-bg" name="AgendarForm" ng-submit="AgendarForm.$valid && postCita()")
 		div
 			h3 Agenda tu cíta
 			div(ng-class="{'u-input-required': AgendarForm.fecha.$error.required}")

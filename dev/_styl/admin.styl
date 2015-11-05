@@ -122,19 +122,73 @@
 .u-person-selected
 	background: rgba($morado, 0.4);
 	color: white;
-	
-.Ficha-cita
-	position: relative;
-	display: flex;
-	flex-flow: column;
-	justify-content: space-between;
-	&-options
-		display: flex;
-		justify-content: space-between;
-		margin-top: 1em;
-	&-info
-		font-size: .9em;
-		margin-top: .5em;
-		& > *
-			text-align: center;
-			margin:0;
+
+.Cita
+	display flex
+	flex-wrap wrap
+	padding 1em 0 2em
+	justify-content space-between
+	&-months
+		width 100%
+		display: flex
+		justify-content space-between
+		background: $naranja
+		padding .5em
+		color white
+		margin 1em 0 2em
+		&:first-child
+			margin-top 0
+		span:last-child
+			padding-left: .5em
+			border-left: 3px solid white
+	&-item
+		position relative
+		padding .5em
+		padding-left 0
+		display flex
+		width 48%
+		margin 2em 0
+		box-shadow: 1px 2px 5px #ccc;
+		header
+			display flex
+			flex-direction column
+			flex-shrink 0
+			width 6em
+			padding 0 .5em
+			figure
+				height 6em
+				bgCover('')
+			button
+				margin-top 1em
+				border-radius 0
+				padding .2em
+				width 100%
+		&-desc
+			width 100%
+		&-estatus
+			z-index: 1
+			position absolute
+			bottom 100%
+			right 0
+			padding .5em
+			color white
+			&.--cancelada
+				background #A53232
+			&.--confirmada
+				background #01933F
+			&.--espera
+				background #969696
+		&-fecha
+			position absolute
+			bottom 100%
+			left 0
+			background $morado
+			color white
+			padding .2em
+			right 0
+		h3
+			margin-bottom .5em
+			span:last-child
+				font-size .8em
+			padding-bottom .5em
+			border-bottom 1px solid #ccc

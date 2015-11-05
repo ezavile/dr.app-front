@@ -8,7 +8,7 @@ section(class="Popup" popup-close)
 					p {{comentario.comentario}}
 					p(class="ComentariosDoc-comentarios-item-detail") {{comentario.paciente.nombre}} - {{comentario.fecha | datetime}}
 	article(class="ComentariosDoc-new" ng-if="usuarioActual.tipoUsuario === 'paciente'")
-		form(name="ComentarioForm" ng-submit="ComentarioForm.$valid && addComentario()")
+		form(name="ComentarioForm" ng-submit="ComentarioForm.$valid && postComentario()")
 			div(ng-class="{'u-input-required': ComentarioForm.comentario.$error.required}")
 				textarea(ng-model="$parent.comentario" name="comentario" required)
 			button(ng-class="{'u-disabled': !ComentarioForm.$valid}") Enviar

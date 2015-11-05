@@ -10,7 +10,7 @@
 			var doctor = DoctorFactory.getStatus();
 			//scope comentarios coming from verDoc
 			//$scope.comentarios
-			$scope.addComentario = function(){
+			$scope.postComentario = function(){
 				if($scope.usuarioActual.tipoUsuario === 'paciente'){
 					var req = {
 						'paciente': $scope.usuarioActual.paciente,
@@ -19,7 +19,7 @@
 					}
 
 					PacienteService
-						.addComentario(req)
+						.postComentario(req)
 						.then(function(res){
 							var comentario = {
 								'paciente': {

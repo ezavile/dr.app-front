@@ -4,7 +4,7 @@ div(class="Popup Registro" popup-close)
 			figcaption ¿Eres doctor?
 		figure(class="Registro-op-usr" ng-click="registro = 'usr'")
 			figcaption ¿Estas en busca de un doctor?
-	form(ng-if="registro == 'doctor'" name="DoctorForm" ng-submit="DoctorForm.$valid && addDoctor()" class="Popup--contentScroll")
+	form(ng-if="registro == 'doctor'" name="DoctorForm" ng-submit="DoctorForm.$valid && postDoctor()" class="Popup--contentScroll")
 		h3 Registro de doctor
 		div.u-labelInput
 			div(class="Upload" style="background-image: url({{doctor.imgPerfil}})")
@@ -52,7 +52,7 @@ div(class="Popup Registro" popup-close)
 			div(class="Doctor-upload-galeria" style="background-image: url({{doctor.foto3}})")
 				input(type="file" file-upload="doctor.foto3")
 		button(ng-class="{'u-disabled': !DoctorForm.$valid}") Registrar
-	form(ng-if="registro == 'usr'" name="PacienteForm" ng-submit="PacienteForm.$valid && addPaciente()" class="Popup--contentScroll")
+	form(ng-if="registro == 'usr'" name="PacienteForm" ng-submit="PacienteForm.$valid && postPaciente()" class="Popup--contentScroll")
 		h3 Registro de paciente
 		div.u-labelInput
 			div(class="Upload" style="background-image: url({{paciente.imgPerfil}})")

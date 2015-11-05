@@ -14,7 +14,6 @@
 			}
 
 			$scope.update = function(){
-				console.log($scope.paciente.imgPerfil);
 				PacienteService
 					.updatePaciente($scope.paciente)
 					.then(function(res){

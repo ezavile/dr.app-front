@@ -24,13 +24,13 @@
 			return deferred.promise;
 		}
 
-		function addDoctor(doc){
+		function postDoctor(doc){
 			var deferred = $q.defer();
 
 			var doctor = angular.fromJson(doc);
 
 			$http
-				.post(URL.URL_API_REST + 'doctor', doctor)
+				.post(URL.URL_API_REST + 'doctores', doctor)
 				.success(function(res) {
 					//console.log(res);
 					deferred.resolve(res);
@@ -47,13 +47,8 @@
 		function doctorById(id){
 			var deferred = $q.defer();
 
-			var doc = {
-				"doctor": id
-			}
-			doc = angular.fromJson(doc);
-
 			$http
-				.post(URL.URL_API_REST + 'doctorById', doc)
+				.get(URL.URL_API_REST + 'doctorById/' + id)
 				.success(function(res) {
 					//console.log(res);
 					deferred.resolve(res);
@@ -69,12 +64,8 @@
 		function doctoresByEspecialidad(idEspecialidad){
 			var deferred = $q.defer();
 
-			var especialidad = {
-				"idEspecialidad": idEspecialidad
-			}
-			especialidad = angular.fromJson(especialidad);
 			$http
-				.post(URL.URL_API_REST + 'doctoresByEspecialidad', especialidad)
+				.get(URL.URL_API_REST + 'doctoresByEspecialidad/' + idEspecialidad)
 				.success(function(res) {
 					//console.log(res);
 					deferred.resolve(res);
@@ -88,7 +79,7 @@
 		}
 
 		return {
-			addDoctor: addDoctor,
+			postDoctor: postDoctor,
 			getEspecialidades: getEspecialidades,
 			doctorById: doctorById,
 			doctoresByEspecialidad: doctoresByEspecialidad
