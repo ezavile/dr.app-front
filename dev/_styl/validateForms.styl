@@ -14,6 +14,17 @@ invalid()
 	&:after
 		content: "* Campo requerido";
 		invalid();
+.u-input-disabled
+	position: relative;
+	input,textarea
+		border: 1px solid gray;
+	&:after
+		content: "No puede ser modificado";
+		invalid();
+		text-align right
+		right 1em
+		top .5em
+		color gray
 .u-input-errorEmail
 	position: relative;
 	input

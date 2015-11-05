@@ -1,25 +1,25 @@
 section(class="Admin")
-	article(class="Admin-img")
-		figure(style="background-image: url(./img/perfil_doc.jpg)")
-	article(class="Admin-info")
-		div
-			label Usuario
-			input(type="text")
-		div
-			label Nombre
-			input(type="text")
-		div
-			label Contraseña
-			input(type="text")
-		div
-			label Correo
-			input(type="text")
-		div
-			label.txtArea Dirección
-			textarea
-		div
-			label Teléfono
-			input(type="text")
-	article(class="Admin-button")
-		button Guardar cambios
-		button(type="cancel") Cancelar
+	form(name="PacienteForm" ng-submit="PacienteForm.$valid && update()")
+		article(class="Admin-img")
+			div.u-labelInput
+				div(class="Upload" style="background-image: url({{paciente.imgPerfil}})")
+					input(type="file" file-upload="paciente.imgPerfil")
+		article(class="Admin-info")
+			div(class="u-input-disabled")
+				label Usuario
+				input(type="text" ng-disabled="true" class="u-disabled" ng-model="paciente.paciente")
+			div(ng-class="{'u-input-required': PacienteForm.nombre.$error.required}")
+				label Nombre
+				input(type="text" ng-model="paciente.nombre" name="nombre" required)
+			div(ng-class="{'u-input-required': PacienteForm.password.$error.required}")
+				label Contraseña
+				input(type="password" ng-model="paciente.password" name="password" required)
+			div(ng-class="{'u-input-required': PacienteForm.correo.$error.required, 'u-input-errorEmail': PacienteForm.correo.$error.email}")
+				label Correo
+				input(type="email" ng-model="paciente.correo" name="correo" required)
+			div(ng-class="{'u-input-required': PacienteForm.telefono.$error.required}")
+				label Teléfono
+				input(type="text" ng-model="paciente.telefono" name="telefono" required)
+		article(class="Admin-button")
+			button(ng-class="{'u-disabled': !PacienteForm.$valid}") Guardar cambios
+			button(ng-click="reset()") Cancelar

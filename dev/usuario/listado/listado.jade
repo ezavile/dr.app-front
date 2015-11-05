@@ -1,4 +1,5 @@
 section.Listado
+	span(ng-if="doctores.length == 0") No hay doctores u.u
 	div.Card(ng-repeat="doctor in doctores" ui-sref="usuario.verDoc({doctor: doctor.doctor})")
 		figure(style="background-image: url({{doctor.imgPerfil}})", class="Card-img")
 		div.u-padding

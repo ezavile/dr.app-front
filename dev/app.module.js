@@ -77,7 +77,8 @@
 			})
 				.state('paciente.perfil',{
 					url: '/perfil',
-					templateUrl: './paciente/perfil/perfil.html'
+					templateUrl: './paciente/perfil/perfil.html',
+					controller: 'PacientePerfilController'
 				})
 
 	}
