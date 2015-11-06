@@ -33,6 +33,42 @@
 			return date;
 		}
 
+		helperFactory.getDay = function(date){
+			var date = new Date(date);
+			return date.getDate();
+		}
+		helperFactory.getMonth = function(date){
+			var date = new Date(date);
+			return date.getMonth() + 1;
+		}
+
+		helperFactory.getYear = function(date){
+			var date = new Date(date);
+			return date.getFullYear();
+		}
+		
+		helperFactory.getNameMonth = function(date){
+			var date = new Date(date);
+			var month = date.getMonth();
+
+			var nameMonths = [
+				'Enero',
+				'Febrero',
+				'Marzo',
+				'Abril',
+				'Mayo',
+				'Junio',
+				'Julio',
+				'Agosto',
+				'Septiembre',
+				'Octubre',
+				'Noviembre',
+				'Diciembre'
+			]
+
+			return nameMonths[month];
+		}
+
 		return helperFactory;
 	}
 

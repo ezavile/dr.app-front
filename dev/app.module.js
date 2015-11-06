@@ -82,7 +82,8 @@
 				})
 				.state('paciente.citas',{
 					url: '/citas',
-					templateUrl: './paciente/citas/citas.html'
+					templateUrl: './paciente/admin/citas/citas.html',
+					controller: 'PacienteAdminAgendarController'
 				})
 
 	}

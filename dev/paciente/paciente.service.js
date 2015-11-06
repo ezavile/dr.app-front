@@ -79,6 +79,23 @@
 			return deferred.promise;
 		}
 
+		function getCitas(paciente){
+			var deferred = $q.defer();
+
+			$http
+				.get(URL.URL_API_REST + 'pacientes/citas/' + paciente)
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
+
 
 		function putPaciente(req){
 			var deferred = $q.defer();
@@ -104,6 +121,7 @@
 			postComentario: postComentario,
 			postMensaje: postMensaje,
 			postCita: postCita,
+			getCitas: getCitas,
 			putPaciente: putPaciente
 		}
 	}
