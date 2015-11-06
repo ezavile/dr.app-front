@@ -16,7 +16,7 @@
 			Paciente.setInfo = function(gral){
 				$sessionStorage.put('Paciente', gral);
 			}
-			Paciente.getCitas = function(){
+			/*Paciente.getCitas = function(){
 				return $sessionStorage.get('PacienteCitas') || undefined;
 			}
 
@@ -30,7 +30,7 @@
 
 			Paciente.setMensajes = function(citas){
 				$sessionStorage.put('PacienteMensajes', citas);
-			}
+			}*/
 
 			return Paciente;
 		}

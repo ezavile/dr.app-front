@@ -17,17 +17,9 @@
 					.login($scope.usr)
 					.then(function(res){
 						if(res.tipoUsuario === 'paciente'){
-							
-							paciente.setCitas(res.citas)
-							paciente.setMensajes(res.mensajes)
-							delete res.citas;
-							delete res.mensajes;
-
 							usuario.setTipoUsuario(res.tipoUsuario);
 							delete res.tipoUsuario;
-							
 							paciente.setInfo(res);
-							
 							$state.reload();
 							helper.popupClose();
 						}

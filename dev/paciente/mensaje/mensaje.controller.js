@@ -21,7 +21,6 @@
 						.postMensaje(req)
 						.then(function(res){
 							console.log(res)
-							$scope.comentario = '';
 						})
 						.catch(function(res){
 							console.log(res);

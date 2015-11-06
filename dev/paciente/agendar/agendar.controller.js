@@ -8,6 +8,7 @@
 		function PacienteAgendarController($scope, HelpersFactory, DoctorFactory, PacienteFactory, PacienteService){
 			$scope.paciente = PacienteFactory.getInfo();
 			var doctor = DoctorFactory.getDoctor();
+			var doctor_citas = DoctorFactory.getCitas();
 			var helper = HelpersFactory;
 			$scope.msjHorasDisponibles = "Solo se muestran las horas disponibles.";
 
@@ -17,7 +18,7 @@
 
 				date = helper.dateYYYYMMDD(date);
 
-				angular.forEach(doctor.citas, function(cita) {
+				angular.forEach(doctor_citas, function(cita) {
 					if(cita.fecha == date){
 						$scope.horasOcupadas.push(cita.hora);
 					}

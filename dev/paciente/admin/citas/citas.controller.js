@@ -27,7 +27,6 @@
 			PacienteService
 				.getCitas(paciente.paciente)
 				.then(function(res){
-					PacienteFactory.setCitas(res);
 					$scope.citas = res;
 				})
 				.catch(function(err){

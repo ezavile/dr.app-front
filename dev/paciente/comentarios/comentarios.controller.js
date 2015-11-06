@@ -8,6 +8,7 @@
 		function PacienteComentariosController($scope, DoctorFactory, PacienteFactory, PacienteService){
 			$scope.paciente = PacienteFactory.getInfo();
 			var doctor = DoctorFactory.getDoctor();
+			var doctor_comentarios = DoctorFactory.getComentarios();
 			//scope comentarios coming from verDoc
 			//$scope.comentarios
 			$scope.postComentario = function(){
@@ -30,7 +31,7 @@
 								'fecha':res.fecha,
 								'comentario':res.comentario
 							}
-							doctor.comentarios.unshift(comentario);
+							doctor_comentarios.unshift(comentario);
 							$scope.comentario = '';
 						})
 						.catch(function(res){

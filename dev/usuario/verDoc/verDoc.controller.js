@@ -21,6 +21,24 @@
 				console.log(res);
 			});
 
+		DoctorService
+			.getComentarios(id)
+			.then(function(res){
+				DoctorFactory.setComentarios(res);
+				$scope.comentarios = res;
+			})
+			.catch(function(res){
+				console.log(res);
+			});
+
+		DoctorService
+			.getCitas(id)
+			.then(function(res){
+				DoctorFactory.setCitas(res);
+			})
+			.catch(function(res){
+				console.log(res);
+			});
 
 	}
 

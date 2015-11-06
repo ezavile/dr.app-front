@@ -78,6 +78,38 @@
 
 			return deferred.promise;
 		}
+		function getComentarios(doc){
+			var deferred = $q.defer();
+
+			$http
+				.get(URL.URL_API_REST + 'doctores/comentarios/' + doc)
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
+		function getMensajes(doc){
+			var deferred = $q.defer();
+
+			$http
+				.get(URL.URL_API_REST + 'doctores/mensajes/' + doc)
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
 
 		function doctoresByEspecialidad(idEspecialidad){
 			var deferred = $q.defer();
@@ -101,6 +133,8 @@
 			getEspecialidades: getEspecialidades,
 			doctorById: doctorById,
 			getCitas: getCitas,
+			getMensajes: getMensajes,
+			getComentarios: getComentarios,
 			doctoresByEspecialidad: doctoresByEspecialidad
 		}
 	}
