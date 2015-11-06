@@ -33,9 +33,19 @@
 			return date;
 		}
 
+		helperFactory.stringToDate = function(date){
+			var date = new Date(date);
+			var day = date.getDate() + 1;
+			var month = date.getMonth() + 1;
+			var year = date.getFullYear();
+			date = year + '-' + month + '-' + day;
+
+			return new Date(date);
+		}
+
 		helperFactory.getDay = function(date){
 			var date = new Date(date);
-			return date.getDate();
+			return date.getDate() + 1;
 		}
 		helperFactory.getMonth = function(date){
 			var date = new Date(date);

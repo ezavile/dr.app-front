@@ -1,0 +1,14 @@
+section(class="Popup" popup-close)
+	form(class="u-form-bg" name="AgendarForm" ng-submit="AgendarForm.$valid && putCita()")
+		div(ng-class="{'u-input-required': AgendarForm.fecha.$error.required}")
+			label Fecha
+			input(type="date" name="fecha" ng-model="upCita.fecha" required)
+		div(style="position:relative")
+			label Hora
+			select(ng-model="upCita.hora" ng-disabled="horas.length == 0")
+				option(ng-repeat="hra in horas" value="{{hra}}") {{hra}}:00</span>
+			span(style="position: absolute; top:100%; left: 0; right: 0; text-align:right; color: gray; font-size: .8em;") {{msjHorasDisponibles}}
+		div(ng-class="{'u-input-required': AgendarForm.asunto.$error.required}")
+			label.txtArea Asunto
+			textarea(name="asunto" ng-model="upCita.asunto" ng-disabled="horas.length == 0" required)
+		button(ng-class="{'u-disabled': !AgendarForm.$valid}" ng-disabled="horas.length == 0")  Agendar

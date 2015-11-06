@@ -29,8 +29,27 @@
 			return deferred.promise;
 		}
 
+		function estatusCita(req){
+			var deferred = $q.defer();
+			var req = angular.fromJson(req);
+
+			$http
+				.put(URL.URL_API_REST + 'estatusCita', req)
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
+
 		return {
-			upload: upload
+			upload: upload,
+			estatusCita: estatusCita
 		}
 	}
 

@@ -5,10 +5,12 @@ section(class="Admin")
 			span {{citas.length}} citas
 		article(class="Cita-item" ng-repeat="cita in citas")
 			div(class="Cita-item-estatus" ng-class="{'--confirmada' : cita.estatus == 'CONFIRMADA', '--cancelada' : cita.estatus == 'CANCELADA', '--espera': cita.estatus == 'EN ESPERA'}") {{cita.estatus}}
-			div(class="Cita-item-fecha") {{cita.fecha | dateDDMMYYY}} - {{cita.hora}}:00
+			div(class="Cita-item-fecha")
+				span {{cita.fecha | date:'dd/MM/yyyy' : 'UTC'}} - {{cita.hora}}:00
 			header
-				figure(style="background-image: url({{cita.doctor.imgPerfil}})")
-				button(ng-if="cita.estatus!='CANCELADA'" type="cancel" ng-class="{'u-disabled': isDisabledCita(cita.fecha)}" ng-disabled="isDisabledCita(cita.fecha)") Cancelar
+				figure(class="Cita-docImgPerfil" style="background-image: url({{cita.doctor.imgPerfil}})" ui-sref="usuario.verDoc({doctor: cita.doctor.doctor})")
+				span(ng-if="cita.estatus!='CANCELADA'" ng-class="{'u-disabled': isDisabledCita(cita.fecha)}" ng-disabled="isDisabledCita(cita.fecha)" class="Cita-item-editar" popup-add="<paciente-cita-update cita='cita' />") Editar
+			button(ng-if="cita.estatus!='CANCELADA'" ng-class="{'u-disabled': isDisabledCita(cita.fecha)}" ng-disabled="isDisabledCita(cita.fecha)" class="Cita-item-cancelar" ng-click="cancelarCita(cita)") Cancelar
 			div(class="Cita-item-desc")
 				h3 {{cita.doctor.doctor}}
 				div
