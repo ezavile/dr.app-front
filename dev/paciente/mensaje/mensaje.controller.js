@@ -3,9 +3,9 @@
 		.module('drApp.Paciente')
 		.controller('PacienteMensajeController', PacienteMensajeController);
 
-		PacienteMensajeController.$inject = ['$scope', 'DoctorFactory', 'PacienteFactory', 'PacienteService'];
+		PacienteMensajeController.$inject = ['$scope', 'DoctorFactory', 'PacienteFactory', 'HelpersService'];
 
-		function PacienteMensajeController($scope, DoctorFactory, PacienteFactory, PacienteService){
+		function PacienteMensajeController($scope, DoctorFactory, PacienteFactory, HelpersService){
 			$scope.paciente = PacienteFactory.getInfo();
 			var doctor = DoctorFactory.getDoctor();
 
@@ -14,10 +14,11 @@
 					var req = {
 						'paciente': $scope.paciente.paciente,
 						'doctor': doctor.doctor,
-						'mensaje': $scope.mensaje
+						'mensaje': $scope.mensaje,
+						'autor': $scope.paciente.nombre
 					}
 
-					PacienteService
+					HelpersService
 						.postMensaje(req)
 						.then(function(res){
 							console.log(res)
