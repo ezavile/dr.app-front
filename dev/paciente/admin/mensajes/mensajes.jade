@@ -1,0 +1,14 @@
+section(class="Admin-mensajes")
+	section(class="Admin-mensajes-people")
+		article(class="Admin-mensajes-people-person" ng-class="{'u-person-selected': dr.doctor == doctor.doctor}" ng-repeat="dr in doctores")
+			figure(style="background-image: url({{dr.imgPerfil}})" ng-click="mensajesByDoc(dr)")
+			figcaption {{dr.doctor}}
+	section(class="Admin-mensajes-content")
+		article(ng-repeat="msj in mensajes")
+			p(class="Admin-mensajes-content-user") {{msj.autor}} | {{msj.fecha | datetime}}
+			p(class="Admin-mensajes-content-desc") {{msj.mensaje}}
+
+	form(class="Admin-mensajes-content-new" name="MensajeForm" ng-submit="MensajeForm.$valid && postMensaje()")
+		div(ng-class="{'u-input-required': MensajeForm.mensaje.$error.required}" style="width: 100%;")
+			textarea(ng-model="mensaje" name="mensaje" required style="width: 100%;")
+		button(ng-class="{'u-disabled': !MensajeForm.$valid}") Enviar

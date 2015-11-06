@@ -8,3 +8,4 @@ require('./comentarios/_comentarios');
 require('./mensaje/_mensaje');
 
 require('./admin/citas/_citas');
+require('./admin/mensajes/_mensajes');

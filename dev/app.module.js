@@ -85,6 +85,11 @@
 					templateUrl: './paciente/admin/citas/citas.html',
 					controller: 'PacienteAdminAgendarController'
 				})
+				.state('paciente.mensajes',{
+					url: '/mensajes',
+					templateUrl: './paciente/admin/mensajes/mensajes.html',
+					controller: 'PacienteAdminMensajesController'
+				})
 
 	}
 

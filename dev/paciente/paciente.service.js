@@ -43,24 +43,6 @@
 			return deferred.promise;
 		}
 
-		function postMensaje(req){
-			var deferred = $q.defer();
-			var req = angular.fromJson(req);
-
-			$http
-				.post(URL.URL_API_REST + 'pacientes/mensajes', req)
-				.success(function(res) {
-					//console.log(res);
-					deferred.resolve(res);
-				})
-				.catch(function(res) {
-					//console.log(res);
-					deferred.reject(res);
-				});
-
-			return deferred.promise;
-		}
-
 		function postCita(req){
 			var deferred = $q.defer();
 			var req = angular.fromJson(req);
@@ -112,6 +94,22 @@
 
 			return deferred.promise;
 		}
+		function getMensajes(paciente){
+			var deferred = $q.defer();
+
+			$http
+				.get(URL.URL_API_REST + 'pacientes/mensajes/' + paciente)
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
 
 
 		function putPaciente(req){
@@ -136,10 +134,10 @@
 		return {
 			postPaciente: postPaciente,
 			postComentario: postComentario,
-			postMensaje: postMensaje,
 			postCita: postCita,
 			putCita: putCita,
 			getCitas: getCitas,
+			getMensajes: getMensajes,
 			putPaciente: putPaciente
 		}
 	}

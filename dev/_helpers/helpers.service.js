@@ -47,9 +47,29 @@
 			return deferred.promise;
 		}
 
+
+		function postMensaje(req){
+			var deferred = $q.defer();
+			var req = angular.fromJson(req);
+
+			$http
+				.post(URL.URL_API_REST + 'mensajes', req)
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
+
 		return {
 			upload: upload,
-			estatusCita: estatusCita
+			estatusCita: estatusCita,
+			postMensaje: postMensaje
 		}
 	}
 

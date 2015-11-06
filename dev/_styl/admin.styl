@@ -60,19 +60,27 @@
 	&-mensajes
 		display: flex;
 		position: relative;
+		height 93vh
 		&-people
 			display: flex;
 			flex-flow: column;
 			flex-shrink: 0;
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			z-index: 1;
+			overflow-y: scroll;
 			&-person
 				padding: 1em 0;
 				width: 8em;
-				margin: 1em 0 0;
+				min-height: 8.5em;
+				align-items: center;
 				&:first-child
 					margin: 0;
 				figure
 					width: 5em;
-					height: 5em;;
+					height: 5em;
 					background-size: cover;
 					margin: 0 auto;
 					margin-bottom: .5em;
@@ -98,13 +106,21 @@
 				figcaption
 					text-align: center;
 		&-content
+			width 100%
 			padding: 0 2em 7em;
-			background: rgba($azul, 0.1);
 			flex-grow: 1;
+			position: absolute;
+			right: 0;
+			top: 0;
+			bottom: 8em;
+			overflow-y: scroll;
+			padding-left: 10em;
+			article
+				padding 1em 0
 			&-new
 				position: absolute;
 				bottom: 0em;
-				left: 8em;
+				left: 9em;
 				right: 0;
 				display: flex;
 				justify-content: space-between;
@@ -117,8 +133,10 @@
 			&-user
 				padding: .5em;
 				font-weight: bold;
-				font-size: .9em;
+				font-size: .8em;
 				text-align: right;
+				background #e9eaed
+				margin-bottom .5em
 .u-person-selected
 	background: rgba($morado, 0.4);
 	color: white;
