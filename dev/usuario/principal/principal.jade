@@ -4,11 +4,11 @@ section.Principal
 		div.u-labelInput
 			select(ng-model="especialidad" ng-options="option.idEspecialidad as option.especialidad for option in especialidades")
 			button(ui-sref="usuario.listado({tipoListado: 'especialidad', search: especialidad})") Buscar
-	form(class="u-form-bg")
+	form(class="u-form-bg" name="Form" ng-submit="Form.$valid")
 		p ¡Que enfermedad tienes!
-		div.u-labelInput
-			input(type="text", placeholder="Ej. epilepsia")
-			button(ui-sref="doctor.perfil") Buscar
+		div.u-labelInput(ng-class="{'u-input-required': Form.enfermedad.$error.required}")
+			input(type="text", ng-model="enfermedad" name="enfermedad" placeholder="Ej. epilepsia" required)
+			button(ui-sref="usuario.listado({tipoListado: 'enfermedad', search: enfermedad})" ng-class="{'u-disabled': !Form.$valid}") Buscar
 section.Destacados
 	div(class="Card")
 		img(src="img/doctor1.jpg", class="Card-img" ui-sref="paciente.perfil")

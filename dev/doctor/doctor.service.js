@@ -145,6 +145,22 @@
 
 			return deferred.promise;
 		}
+		function doctoresByEnfermedad(enfermedad){
+			var deferred = $q.defer();
+
+			$http
+				.get(URL.URL_API_REST + 'doctoresByEnfermedad/' + enfermedad)
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
 
 		return {
 			postDoctor: postDoctor,
@@ -154,7 +170,8 @@
 			getCitas: getCitas,
 			getMensajes: getMensajes,
 			getComentarios: getComentarios,
-			doctoresByEspecialidad: doctoresByEspecialidad
+			doctoresByEspecialidad: doctoresByEspecialidad,
+			doctoresByEnfermedad: doctoresByEnfermedad
 		}
 	}
 

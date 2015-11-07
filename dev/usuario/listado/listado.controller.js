@@ -11,7 +11,8 @@
 		if(tipoListado === 'especialidad'){
 			var idEspecialidad = $stateParams.search;
 
-			DoctorService.doctoresByEspecialidad(idEspecialidad)
+			DoctorService
+				.doctoresByEspecialidad(idEspecialidad)
 				.then(function(res){
 					$scope.doctores = res;
 				})
@@ -20,7 +21,16 @@
 				});
 		}
 		if(tipoListado === 'enfermedad'){
-			var enfermedad = $stateParams.search; 
+			var enfermedad = $stateParams.search;
+
+			DoctorService
+				.doctoresByEnfermedad(enfermedad)
+				.then(function(res){
+					$scope.doctores = res;
+				})
+				.catch(function(res){
+					console.log(res);
+				});
 		}
 	
 	}
