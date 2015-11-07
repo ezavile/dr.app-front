@@ -4,12 +4,13 @@
 		.module('drApp.Usuario')
 		.controller('LoginController', LoginController);
 
-		LoginController.$inject = ['$scope', '$state', 'LoginService', 'UsuarioFactory', 'PacienteFactory', 'HelpersFactory'];
+		LoginController.$inject = ['$scope', '$state', 'LoginService', 'UsuarioFactory', 'PacienteFactory', 'DoctorFactory', 'HelpersFactory'];
 
-		function LoginController($scope, $state, LoginService, UsuarioFactory, PacienteFactory, HelpersFactory){ 
+		function LoginController($scope, $state, LoginService, UsuarioFactory, PacienteFactory, DoctorFactory, HelpersFactory){ 
 			var helper = HelpersFactory;
 			var usuario = UsuarioFactory;
 			var paciente = PacienteFactory;
+			var doctor = DoctorFactory;
 
 			$scope.usr = {};
 			$scope.login = function(){
@@ -20,6 +21,13 @@
 							usuario.setTipoUsuario(res.tipoUsuario);
 							delete res.tipoUsuario;
 							paciente.setInfo(res);
+							$state.reload();
+							helper.popupClose();
+						}
+						if(res.tipoUsuario === 'doctor'){
+							usuario.setTipoUsuario(res.tipoUsuario);
+							delete res.tipoUsuario;
+							doctor.setDoctor(res);
 							$state.reload();
 							helper.popupClose();
 						}

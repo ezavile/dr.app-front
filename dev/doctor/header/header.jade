@@ -1,7 +1,8 @@
-h2 Bienvenido Dr. Edgar Zavala
+span.icon-home(ui-sref="usuario.principal")
+h2 Bienvenido Dr. {{doctor.nombre}}
 div
-	figure(class="Header-perfil-img" style="background-image:url(./img/perfil_doc.jpg)")
-	span(class="Header-perfil-user") ezavile
+	figure(class="Header-perfil-img" style="background-image:url({{doctor.imgPerfil}})")
+	span(class="Header-perfil-user") {{doctor.doctor}}
 	i(class="Header-perfil-config icon-settings")
 	nav(class="Header-perfil-menu")
 		ul
