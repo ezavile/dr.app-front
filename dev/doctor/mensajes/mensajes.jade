@@ -1,34 +1,14 @@
 section(class="Admin-mensajes")
 	section(class="Admin-mensajes-people")
-		article(class="Admin-mensajes-people-person u-person-selected")
-			figure(style="background-image: url(./img/perfil_doc.jpg)")
-			figcaption Edgar Zavala
+		article(class="Admin-mensajes-people-person" ng-repeat="pac in pacientes" ng-class="{'u-person-selected': pac.paciente == paciente.paciente}")
+			figure(style="background-image: url({{pac.imgPerfil}})" ng-click="mensajesByPac(pac)")
+			figcaption {{pac.paciente}}
 	section(class="Admin-mensajes-content")
-		article
-			p(class="Admin-mensajes-content-user") Edgar Zavala - ezavile | 14 de Octubre 2015
-			p(class="Admin-mensajes-content-desc")   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim beatae, porro excepturi eligendi sint, fugiat ullam fuga. Blanditiis aliquid, optio sunt quidem, ratione cum in magni. Suscipit deleniti nam aspernatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis modi fugiat vitae assumenda facilis unde adipisci nemo? Eveniet, deleniti. Debitis sit esse maxime saepe enim ipsam perferendis, sunt mollitia dolore?
-		article
-			p(class="Admin-mensajes-content-user") Edgar Zavala - ezavile | 14 de Octubre 2015
-			p(class="Admin-mensajes-content-desc")   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim beatae, porro excepturi eligendi sint, fugiat ullam fuga. Blanditiis aliquid, optio sunt quidem, ratione cum in magni. Suscipit deleniti nam aspernatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis modi fugiat vitae assumenda facilis unde adipisci nemo? Eveniet, deleniti. Debitis sit esse maxime saepe enim ipsam perferendis, sunt mollitia dolore?
-		article
-			p(class="Admin-mensajes-content-user") Edgar Zavala - ezavile | 14 de Octubre 2015
-			p(class="Admin-mensajes-content-desc")   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim beatae, porro excepturi eligendi sint, fugiat ullam fuga. Blanditiis aliquid, optio sunt quidem, ratione cum in magni. Suscipit deleniti nam aspernatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis modi fugiat vitae assumenda facilis unde adipisci nemo? Eveniet, deleniti. Debitis sit esse maxime saepe enim ipsam perferendis, sunt mollitia dolore?
-		article
-			p(class="Admin-mensajes-content-user") Edgar Zavala - ezavile | 14 de Octubre 2015
-			p(class="Admin-mensajes-content-desc")   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim beatae, porro excepturi eligendi sint, fugiat ullam fuga. Blanditiis aliquid, optio sunt quidem, ratione cum in magni. Suscipit deleniti nam aspernatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis modi fugiat vitae assumenda facilis unde adipisci nemo? Eveniet, deleniti. Debitis sit esse maxime saepe enim ipsam perferendis, sunt mollitia dolore?
-		article
-			p(class="Admin-mensajes-content-user") Edgar Zavala - ezavile | 14 de Octubre 2015
-			p(class="Admin-mensajes-content-desc")   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim beatae, porro excepturi eligendi sint, fugiat ullam fuga. Blanditiis aliquid, optio sunt quidem, ratione cum in magni. Suscipit deleniti nam aspernatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis modi fugiat vitae assumenda facilis unde adipisci nemo? Eveniet, deleniti. Debitis sit esse maxime saepe enim ipsam perferendis, sunt mollitia dolore?
-		article
-			p(class="Admin-mensajes-content-user") Edgar Zavala - ezavile | 14 de Octubre 2015
-			p(class="Admin-mensajes-content-desc")   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim beatae, porro excepturi eligendi sint, fugiat ullam fuga. Blanditiis aliquid, optio sunt quidem, ratione cum in magni. Suscipit deleniti nam aspernatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis modi fugiat vitae assumenda facilis unde adipisci nemo? Eveniet, deleniti. Debitis sit esse maxime saepe enim ipsam perferendis, sunt mollitia dolore?
-		article
-			p(class="Admin-mensajes-content-user") Edgar Zavala - ezavile | 14 de Octubre 2015
-			p(class="Admin-mensajes-content-desc")   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim beatae, porro excepturi eligendi sint, fugiat ullam fuga. Blanditiis aliquid, optio sunt quidem, ratione cum in magni. Suscipit deleniti nam aspernatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis modi fugiat vitae assumenda facilis unde adipisci nemo? Eveniet, deleniti. Debitis sit esse maxime saepe enim ipsam perferendis, sunt mollitia dolore?
-		article
-			p(class="Admin-mensajes-content-user") Edgar Zavala - ezavile | 14 de Octubre 2015
-			p(class="Admin-mensajes-content-desc")   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim beatae, porro excepturi eligendi sint, fugiat ullam fuga. Blanditiis aliquid, optio sunt quidem, ratione cum in magni. Suscipit deleniti nam aspernatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis modi fugiat vitae assumenda facilis unde adipisci nemo? Eveniet, deleniti. Debitis sit esse maxime saepe enim ipsam perferendis, sunt mollitia dolore?
+		article(ng-repeat="msj in mensajes")
+			p(class="Admin-mensajes-content-user") {{msj.autor}} | {{msj.fecha | datetime}}
+			p(class="Admin-mensajes-content-desc") {{msj.mensaje}}
 
-	article(class="Admin-mensajes-content-new")
-		textarea
-		button Enviar
+	form(class="Admin-mensajes-content-new" name="MensajeForm" ng-submit="MensajeForm.$valid && postMensaje()")
+		div(ng-class="{'u-input-required': MensajeForm.mensaje.$error.required}" style="width: 100%;")
+			textarea(ng-model="mensaje" name="mensaje" required style="width: 100%;")
+		button(ng-class="{'u-disabled': !MensajeForm.$valid}") Enviar

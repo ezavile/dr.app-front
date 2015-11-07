@@ -63,7 +63,8 @@
 				})
 				.state('doctor.mensajes',{
 					url: '/mensajes',
-					templateUrl: './doctor/mensajes/mensajes.html'
+					templateUrl: './doctor/mensajes/mensajes.html',
+					controller: 'DoctorMensajesController'
 				})
 				.state('doctor.citas',{
 					url: '/citas',
