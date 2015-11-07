@@ -42,6 +42,24 @@
 
 			return deferred.promise;
 		}
+		function putDoctor(doc){
+			var deferred = $q.defer();
+
+			var doctor = angular.fromJson(doc);
+
+			$http
+				.put(URL.URL_API_REST + 'doctores', doctor)
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
 
 
 		function doctorById(id){
@@ -130,6 +148,7 @@
 
 		return {
 			postDoctor: postDoctor,
+			putDoctor: putDoctor,
 			getEspecialidades: getEspecialidades,
 			doctorById: doctorById,
 			getCitas: getCitas,

@@ -53,7 +53,8 @@
 			})
 				.state('doctor.perfil',{
 					url: '/perfil',
-					templateUrl: './doctor/perfil/perfil.html'
+					templateUrl: './doctor/perfil/perfil.html',
+					controller: 'DoctorPerfilController'
 				})
 				.state('doctor.comentarios',{
 					url: '/comentarios',

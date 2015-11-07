@@ -1,34 +1,48 @@
 section(class="Admin")
-	article(class="Admin-img")
-		figure(style="background-image: url(./img/perfil_doc.jpg)")
-	article(class="Admin-info")
-		div
-			label Especialidad
-			select
-				option Valor 1
-				option Valor 2
-				option Valor 3
-		div
-			label Usuario
-			input(type="text")
-		div
-			label Nombre
-			input(type="text")
-		div
-			label Contraseña
-			input(type="text")
-		div
-			label Correo
-			input(type="text")
-		div
-			label.txtArea Dirección
-			textarea
-		div
-			label.txtArea Servicios
-			textarea
-		div
-			label Teléfono
-			input(type="text")
-	article(class="Admin-button")
-		button Guardar cambios
-		button(type="cancel") Cancelar
+	form(name="DoctorForm" ng-submit="DoctorForm.$valid && putDoctor()")
+		div.u-labelInput
+			div(class="Upload" style="background-image: url({{doctor.imgPerfil}})")
+				input(type="file" file-upload="doctor.imgPerfil")
+		div.u-labelInput
+			div
+				label Especialidad
+				select(ng-model="doctor.idEspecialidad" ng-init="doctor.idEspecialidad = doctor.idEspecialidad || especialidades[0].idEspecialidad" ng-options="option.idEspecialidad as option.especialidad for option in especialidades")
+			div(ng-class="{'u-input-required': DoctorForm.nombre.$error.required}")
+				label Nombre
+				input(type="text", name="nombre" ng-model="doctor.nombre" required)
+		div.u-labelInput
+			div(class="u-input-disabled")
+				label Usuario
+				input(type="text" ng-disabled="true" class="u-disabled" ng-model="doctor.doctor")
+			div(ng-class="{'u-input-required': DoctorForm.password.$error.required}")
+				label Contraseña
+				input(type="text", name="password" style="display:none")
+				input(type="password", name="password" ng-model="doctor.password" required)
+		div.u-labelInput
+			div(ng-class="{'u-input-required': DoctorForm.telefono.$error.required}")
+				label Teléfono
+				input(type="text", name="telefono" ng-model="doctor.telefono" required)
+			div(ng-class="{'u-input-required': DoctorForm.correo.$error.required, 'u-input-errorEmail': DoctorForm.correo.$error.email}")
+				label Correo
+				input(type="email", name="correo" ng-model="doctor.correo" required)
+		div.u-labelInput
+			div(ng-class="{'u-input-required': DoctorForm.servicios.$error.required}")
+				label.txtArea Servicios
+				textarea(ng-model="doctor.servicios" name="servicios" required)
+			div(ng-class="{'u-input-required': DoctorForm.direccion.$error.required}")
+				label.txtArea Dirección
+				textarea(ng-model="doctor.direccion" googleplace direccion="doctor.direccion" coordenadas="doctor.coordenadas" name="direccion" required )
+		div.u-labelInput
+			article(class="u-mapa")
+				map(center="{{doctor.coordenadas}}", zoom="18")
+					marker(position="{{doctor.coordenadas}}")
+		h2 Galeria
+		div.u-labelInput
+			div(class="Doctor-upload-galeria" style="background-image: url({{doctor.foto1}})")
+				input(type="file" file-upload="doctor.foto1")
+			div(class="Doctor-upload-galeria" style="background-image: url({{doctor.foto2}})")
+				input(type="file" file-upload="doctor.foto2")
+			div(class="Doctor-upload-galeria" style="background-image: url({{doctor.foto3}})")
+				input(type="file" file-upload="doctor.foto3")
+		button(ng-class="{'u-disabled': !DoctorForm.$valid}") Guardar cambios
+		button(ng-click="reset()") Cancelar
