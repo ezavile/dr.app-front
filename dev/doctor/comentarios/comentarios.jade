@@ -1,33 +1,14 @@
-section(class="Admin-ficha")
-	article(class="Admin-ficha-item")
-		figure(style="background-image: url(./img/perfil_doc.jpg)")
-		figcaption(class="Admin-ficha-item-detail") Edgar Zavala - 14 Febrero 2015
-		p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi laborum voluptas enim architecto labore amet, distinctio quaerat. Consectetur nam, inventore quos cum. Fugiat expedita enim voluptate qui, itaque facere minima.
-	article(class="Admin-ficha-item")
-		figure(style="background-image: url(./img/perfil_doc.jpg)")
-		figcaption(class="Admin-ficha-item-detail") Edgar Zavala - 14 Febrero 2015
-		p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi laborum voluptas enim architecto labore amet, distinctio quaerat. Consectetur nam, inventore quos cum. Fugiat expedita enim voluptate qui, itaque facere minima.
-	article(class="Admin-ficha-item")
-		figure(style="background-image: url(./img/perfil_doc.jpg)")
-		figcaption(class="Admin-ficha-item-detail") Edgar Zavala - 14 Febrero 2015
-		p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi laborum voluptas enim architecto labore amet, distinctio quaerat. Consectetur nam, inventore quos cum. Fugiat expedita enim voluptate qui, itaque facere minima.
-	article(class="Admin-ficha-item")
-		figure(style="background-image: url(./img/perfil_doc.jpg)")
-		figcaption(class="Admin-ficha-item-detail") Edgar Zavala - 14 Febrero 2015
-		p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi laborum voluptas enim architecto labore amet, distinctio quaerat. Consectetur nam, inventore quos cum. Fugiat expedita enim voluptate qui, itaque facere minima.
-	article(class="Admin-ficha-item")
-		figure(style="background-image: url(./img/perfil_doc.jpg)")
-		figcaption(class="Admin-ficha-item-detail") Edgar Zavala - 14 Febrero 2015
-		p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi laborum voluptas enim architecto labore amet, distinctio quaerat. Consectetur nam, inventore quos cum. Fugiat expedita enim voluptate qui, itaque facere minima.
-	article(class="Admin-ficha-item")
-		figure(style="background-image: url(./img/perfil_doc.jpg)")
-		figcaption(class="Admin-ficha-item-detail") Edgar Zavala - 14 Febrero 2015
-		p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi laborum voluptas enim architecto labore amet, distinctio quaerat. Consectetur nam, inventore quos cum. Fugiat expedita enim voluptate qui, itaque facere minima.
-	article(class="Admin-ficha-item")
-		figure(style="background-image: url(./img/perfil_doc.jpg)")
-		figcaption(class="Admin-ficha-item-detail") Edgar Zavala - 14 Febrero 2015
-		p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi laborum voluptas enim architecto labore amet, distinctio quaerat. Consectetur nam, inventore quos cum. Fugiat expedita enim voluptate qui, itaque facere minima.
-	article(class="Admin-ficha-item")
-		figure(style="background-image: url(./img/perfil_doc.jpg)")
-		figcaption(class="Admin-ficha-item-detail") Edgar Zavala - 14 Febrero 2015
-		p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi laborum voluptas enim architecto labore amet, distinctio quaerat. Consectetur nam, inventore quos cum. Fugiat expedita enim voluptate qui, itaque facere minima.
+section(class="Admin")
+	section(class="Cita" ng-repeat="comentarios in comentariosPerMonths")
+		h3(class="Cita-months")
+			span {{comentarios[0].year}} - {{comentarios[0].month}}
+			span {{comentarios.length}} comentarios
+		article(class="Cita-item" ng-repeat="comentario in comentarios")
+			div(class="Cita-item-fecha")
+				span {{comentario.fecha | datetime}}
+			header
+				figure(style="background-image: url({{comentario.paciente.imgPerfil}})")
+			div(class="Cita-item-desc")
+				h3 {{comentario.paciente.nombre}}
+				div
+					p(class="Cita-asunto") {{comentario.comentario}}
