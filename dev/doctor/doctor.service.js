@@ -161,8 +161,25 @@
 
 			return deferred.promise;
 		}
+		function getDoctores(){
+			var deferred = $q.defer();
+
+			$http
+				.get(URL.URL_API_REST + 'doctores')
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
 
 		return {
+			getDoctores: getDoctores,
 			postDoctor: postDoctor,
 			putDoctor: putDoctor,
 			getEspecialidades: getEspecialidades,

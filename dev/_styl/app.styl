@@ -187,14 +187,26 @@ option:disabled
 	margin: 1em;
 	cursor: pointer;
 	text-align: center;
+	position relative
+	padding-bottom 2em
 	boxShadow();
 	width: 10em;
 	background: white;
+	&-nombre
+		padding 1em .5em .5em
+		margin 0
+		font-size .9em
 	&-img
 		width: 100%;
 		bgCover('');
-		height: 10em;
-		max-height: 8em;
+		background-position center center
+		height: 8em;
+	&-especialidad
+		position absolute
+		left 0
+		right 0
+		font-size .9em
+		bottom .5em
 @import '../usuario/usuario'
 @import '../paciente/paciente'
 //@import '../doctor/doctor'

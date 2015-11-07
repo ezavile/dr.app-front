@@ -10,19 +10,7 @@ section.Principal
 			input(type="text", ng-model="enfermedad" name="enfermedad" placeholder="Ej. epilepsia" required)
 			button(ui-sref="usuario.listado({tipoListado: 'enfermedad', search: enfermedad})" ng-class="{'u-disabled': !Form.$valid}") Buscar
 section.Destacados
-	div(class="Card")
-		img(src="img/doctor1.jpg", class="Card-img" ui-sref="paciente.perfil")
-		h3.Card-nombre Nombre doctor
-		p.Card-especialidad especialidad
-	div(class="Card")
-		img(src="img/doctor1.jpg", class="Card-img" ui-sref="usuario.perfil")
-		h3.Card-nombre Nombre doctor
-		p.Card-especialidad especialidad
-	div(class="Card")
-		img(src="img/doctor1.jpg", class="Card-img")
-		h3.Card-nombre Nombre doctor
-		p.Card-especialidad especialidad
-	div(class="Card")
-		img(src="img/doctor1.jpg", class="Card-img")
-		h3.Card-nombre Nombre doctor
-		p.Card-especialidad especialidad
+	div(class="Card" ng-repeat="doctor in doctores")
+		figure(style="background-image: url({{doctor.imgPerfil}})", class="Card-img" ui-sref="usuario.verDoc({doctor: doctor.doctor})")
+		h3.Card-nombre {{doctor.nombre}}
+		p.Card-especialidad {{doctor.especialidad.especialidad}}
