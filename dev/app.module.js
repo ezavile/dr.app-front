@@ -66,7 +66,8 @@
 				})
 				.state('doctor.citas',{
 					url: '/citas',
-					templateUrl: './doctor/citas/citas.html'
+					templateUrl: './doctor/citas/citas.html',
+					controller: 'DoctorCitasController'
 				})
 
 			/************ Paciente ************************/
