@@ -1,7 +1,7 @@
 section.Listado
 	article(ng-if="doctores.length == 0" class="Listado-sinDoc")
 		span No se ha encontrado nigún doctor, por favor intente de nuevo.
-		i.icon-prev
+		i.icon-back(ui-sref="usuario.principal") Regresar
 	div.Card(ng-repeat="doctor in doctores" ui-sref="usuario.verDoc({doctor: doctor.doctor})")
 		figure(style="background-image: url({{doctor.imgPerfil}})", class="Card-img")
 		div.u-padding
