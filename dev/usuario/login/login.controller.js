@@ -17,19 +17,23 @@
 				LoginService
 					.login($scope.usr)
 					.then(function(res){
-						if(res.tipoUsuario === 'paciente'){
-							usuario.setTipoUsuario(res.tipoUsuario);
-							delete res.tipoUsuario;
-							paciente.setInfo(res);
-							$state.reload();
-							helper.popupClose();
-						}
-						if(res.tipoUsuario === 'doctor'){
-							usuario.setTipoUsuario(res.tipoUsuario);
-							delete res.tipoUsuario;
-							doctor.setDoctor(res);
-							$state.reload();
-							helper.popupClose();
+						if(res.estatus=='success'){
+							if(res.tipoUsuario === 'paciente'){
+								usuario.setTipoUsuario(res.tipoUsuario);
+								paciente.setInfo(res.paciente);
+								helper.notify(res);
+								$state.reload();
+								helper.popupClose();
+							}
+							if(res.tipoUsuario === 'doctor'){
+								usuario.setTipoUsuario(res.tipoUsuario);
+								doctor.setDoctor(res.doctor);
+								helper.notify(res);
+								$state.reload();
+								helper.popupClose();
+							}
+						} else {
+							helper.notify(res);
 						}
 					})
 					.catch(function(res){

@@ -1,7 +1,7 @@
 section(class="Popup" popup-close)
 	form(class="u-form-bg" name="loginForm" ng-submit="loginForm.$valid && login()")
 		h3 Iniciar Sesión
-		div(ng-class="{'u-input-required': loginForm.usuario.$error.required}")
+		div(ng-class="{'u-input-required': loginForm.usuario.$error.required}" style="display:flex; justify-content: flex-end;")
 			label Usuario
 			input(type="text" ng-model="usr.usuario" name="usuario" required)
 		div(ng-class="{'u-input-required': loginForm.password.$error.required}")
