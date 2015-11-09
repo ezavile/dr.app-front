@@ -14,6 +14,20 @@ invalid()
 	&:after
 		content: "* Campo requerido";
 		invalid();
+.u-input-maxlength
+	position: relative;
+	input,textarea
+		border: 1px solid red;
+	&:after
+		content: "Máximo 10 caracteres";
+		invalid();
+.u-input-minlength
+	position: relative;
+	input,textarea
+		border: 1px solid red;
+	&:after
+		content: "Mínimo 10 caracteres";
+		invalid();
 .u-input-disabled
 	position: relative;
 	input,textarea

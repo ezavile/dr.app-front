@@ -16,6 +16,9 @@
 		};
 
 		helperFactory.notify = function (mensaje) {
+			var body = angular.element(document).find('body');
+			body.addClass('popup-on');
+			
 			var notify = angular.element(document.getElementById("Notify"));
 			notify.addClass('Notify--on');
 

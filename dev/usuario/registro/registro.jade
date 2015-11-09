@@ -12,34 +12,42 @@ div(class="Popup Registro" popup-close)
 		div.u-labelInput
 			div
 				label Especialidad
-				select(ng-model="doctor.idEspecialidad" ng-init="doctor.idEspecialidad = doctor.idEspecialidad || especialidades[0].idEspecialidad" ng-options="option.idEspecialidad as option.especialidad for option in especialidades")
-			div(ng-class="{'u-input-required': DoctorForm.nombre.$error.required}")
-				label Nombre
-				input(type="text", name="nombre" ng-model="doctor.nombre" required)
+				div
+					select(ng-model="doctor.idEspecialidad" ng-init="doctor.idEspecialidad = doctor.idEspecialidad || especialidades[0].idEspecialidad" ng-options="option.idEspecialidad as option.especialidad for option in especialidades")
+			div
+				label Nombre 
+				div(ng-class="{'u-input-required': DoctorForm.nombre.$error.required}")
+					input(type="text", name="nombre" ng-model="doctor.nombre" required)
 		div.u-labelInput
-			div(ng-class="{'u-input-required': DoctorForm.usuario.$error.required}")
-				label Usuario
-				input(type="text", name="usuario" style="display:none")
-				input(type="text", name="usuario" ng-model="doctor.doctor" required)
-			div(ng-class="{'u-input-required': DoctorForm.password.$error.required}")
+			div
+				label Usuario <span class="spanUser">(No podrá ser cambiado)</span>
+				div(ng-class="{'u-input-required': DoctorForm.usuario.$error.required}")
+					input(type="text", name="usuario" style="display:none")
+					input(type="text", limit-to="10" name="usuario" ng-model="doctor.doctor" required)
+			div
 				label Contraseña
-				input(type="text", name="password" style="display:none")
-				input(type="password", name="password" ng-model="doctor.password" required)
+				div(ng-class="{'u-input-required': DoctorForm.password.$error.required}")
+					input(type="text", name="password" style="display:none")
+					input(type="password", name="password" ng-model="doctor.password" required)
 		div.u-labelInput
-			div(ng-class="{'u-input-required': DoctorForm.telefono.$error.required}")
+			div
 				label Teléfono
-				input(type="text", name="telefono" ng-model="doctor.telefono" required)
-			div(ng-class="{'u-input-required': DoctorForm.correo.$error.required, 'u-input-errorEmail': DoctorForm.correo.$error.email}")
+				div(ng-class="{'u-input-required': DoctorForm.telefono.$error.required, 'u-input-minlength': DoctorForm.telefono.$error.minlength}")
+					input(type="text" name="telefono" ng-model="doctor.telefono" ng-minlength="10" limit-to="10" numbers-only required)
+			div
 				label Correo
-				input(type="email", name="correo" ng-model="doctor.correo" required)
+				div(ng-class="{'u-input-required': DoctorForm.correo.$error.required, 'u-input-errorEmail': DoctorForm.correo.$error.email}")
+					input(type="email", name="correo" ng-model="doctor.correo" required)
 		div.u-labelInput
-			div(ng-class="{'u-input-required': DoctorForm.servicios.$error.required}")
+			div
 				label.txtArea Servicios
-				textarea(ng-model="doctor.servicios" name="servicios" required)
-			div(ng-class="{'u-input-required': DoctorForm.direccion.$error.required}")
+				div(ng-class="{'u-input-required': DoctorForm.servicios.$error.required}")
+					textarea(ng-model="doctor.servicios" name="servicios" required)
+			div
 				label.txtArea Dirección
-				textarea(ng-model="doctor.direccion" googleplace direccion="doctor.direccion" coordenadas="doctor.coordenadas" name="direccion" required )
-		div.u-labelInput
+				div(ng-class="{'u-input-required': DoctorForm.direccion.$error.required}")
+					textarea(ng-model="doctor.direccion" googleplace direccion="doctor.direccion" coordenadas="doctor.coordenadas" name="direccion" required)
+		div.u-labelInput(ng-if="doctor.coordenadas")
 			article(class="u-mapa")
 				map(center="{{doctor.coordenadas}}", zoom="18")
 					marker(position="{{doctor.coordenadas}}")
@@ -58,22 +66,27 @@ div(class="Popup Registro" popup-close)
 			div(class="Upload" style="background-image: url({{paciente.imgPerfil}})")
 				input(type="file" file-upload="paciente.imgPerfil")
 		div.u-labelInput
-			div(ng-class="{'u-input-required': PacienteForm.usuario.$error.required}")
+			div
 				label Usuario
-				input(type="text", name="usuario" style="display:none")
-				input(type="text", name="usuario" ng-model="paciente.paciente" required)
-			div(ng-class="{'u-input-required': PacienteForm.nombre.$error.required}")
+				div(ng-class="{'u-input-required': PacienteForm.usuario.$error.required}")
+					input(type="text", name="usuario" style="display:none")
+					input(type="text", limit-to="10" ng-model="paciente.paciente" required)
+			div
 				label Nombre
-				input(type="text", name="nombre" ng-model="paciente.nombre" required)
+				div(ng-class="{'u-input-required': PacienteForm.nombre.$error.required}")
+					input(type="text", name="nombre" ng-model="paciente.nombre" required)
 		div.u-labelInput
-			div(ng-class="{'u-input-required': PacienteForm.password.$error.required}")
+			div
 				label Contraseña
-				input(type="text", name="password" style="display:none")
-				input(type="password", name="password" ng-model="paciente.password" required)
-			div(ng-class="{'u-input-required': PacienteForm.correo.$error.required, 'u-input-errorEmail': PacienteForm.correo.$error.email}")
+				div(ng-class="{'u-input-required': PacienteForm.password.$error.required}")
+					input(type="text", name="password" style="display:none")
+					input(type="password", name="password" ng-model="paciente.password" required)
+			div
 				label Correo
-				input(type="email", name="correo" ng-model="paciente.correo" required)
-		div(ng-class="{'u-input-required': PacienteForm.telefono.$error.required}")
+				div(ng-class="{'u-input-required': PacienteForm.correo.$error.required, 'u-input-errorEmail': PacienteForm.correo.$error.email}")
+					input(type="email", name="correo" ng-model="paciente.correo" required)
+		div
 			label Teléfono
-			input(type="text" name="telefono" ng-model="paciente.telefono" required)
+			div(ng-class="{'u-input-required': PacienteForm.telefono.$error.required, 'u-input-minlength': PacienteForm.telefono.$error.minlength}")
+				input(type="text" name="telefono" limit-to="10" ng-model="paciente.telefono" numbers-only ng-minlength="10" required)
 		button(ng-class="{'u-disabled': !PacienteForm.$valid}") Registrar

@@ -25,7 +25,10 @@
 			$scope.postDoctor = function(){ 
 				DoctorService.postDoctor($scope.doctor)
 					.then(function(res){
-						console.log(res);
+						helper.notify(res);
+						if(res.estatus=='success'){
+							helper.popupClose();
+						}
 					})
 					.catch(function(res){
 						console.log(res);

@@ -8,8 +8,49 @@
 		.directive('logout', logout)
 		.directive('fileUpload', fileUpload)
 		.directive('googleplace', googleplace)
-		.directive('notify', notify);
+		.directive('notify', notify)
+		.directive('numbersOnly', numbersOnly)
+		.directive('limitTo', limitTo);
 
+		function limitTo(){
+			return {
+				restrict: 'A',
+				require: 'ngModel',
+				link: function(scope, elem, attrs, ngModel) {
+					attrs.$set("ngTrim", "false");
+					var limitLength = parseInt(attrs.limitTo, 10);// console.log(attrs);
+					scope.$watch(attrs.ngModel, function(newValue) {
+						if(ngModel.$viewValue){
+							if(ngModel.$viewValue.length>limitLength){
+								ngModel.$setViewValue( ngModel.$viewValue.substring(0, limitLength ) );
+								ngModel.$render();
+							}
+						}
+					});
+				}
+			}
+		}
+
+		function numbersOnly(){
+			return {
+				require: 'ngModel',
+				link: function(scope, element, attrs, modelCtrl) {
+					modelCtrl.$parsers.push(function (inputValue) {
+						// this next if is necessary for when using ng-required on your input. 
+						// In such cases, when a letter is typed first, this parser will be called
+						// again, and the 2nd time, the value will be undefined
+						if (inputValue == undefined) return '' 
+							var transformedInput = inputValue.replace(/[^0-9]/g, ''); 
+						if (transformedInput!=inputValue) {
+							modelCtrl.$setViewValue(transformedInput);
+							modelCtrl.$render();
+						}
+
+						return transformedInput;
+					});
+				}
+			};
+		}
 		function notify(){
 			return {
 				restrict: 'E',
@@ -37,13 +78,20 @@
 				link: function(scope, element, attrs, model) {
 					scope.gPlace = new google.maps.places.Autocomplete(element[0], {});
 					google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
-						var address = scope.gPlace.getPlace().formatted_address;
-						var latitude = scope.gPlace.getPlace().geometry.location.lat();
-						var longitude = scope.gPlace.getPlace().geometry.location.lng();
 
-						scope.direccion = address;
-						scope.coordenadas = latitude + ',' + longitude;
+						if(scope.gPlace.getPlace().geometry){
+							var address = scope.gPlace.getPlace().formatted_address;
+							var latitude = scope.gPlace.getPlace().geometry.location.lat();
+							var longitude = scope.gPlace.getPlace().geometry.location.lng();
+
+							scope.direccion = address;
+							scope.coordenadas = latitude + ',' + longitude;
+						} else {
+							scope.direccion = undefined;
+							scope.coordenadas = undefined;
+						}
 						scope.$apply();
+
 					});
 				}
 			};
