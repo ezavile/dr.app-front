@@ -3,11 +3,12 @@
 		.module('drApp.Paciente')
 		.controller('PacienteMensajeController', PacienteMensajeController);
 
-		PacienteMensajeController.$inject = ['$scope', 'DoctorFactory', 'PacienteFactory', 'HelpersService'];
+		PacienteMensajeController.$inject = ['$scope', 'DoctorFactory', 'PacienteFactory', 'HelpersService', 'HelpersFactory'];
 
-		function PacienteMensajeController($scope, DoctorFactory, PacienteFactory, HelpersService){
+		function PacienteMensajeController($scope, DoctorFactory, PacienteFactory, HelpersService, HelpersFactory){
 			$scope.paciente = PacienteFactory.getInfo();
 			var doctor = DoctorFactory.getDoctor();
+			var helper = HelpersFactory;
 
 			$scope.postMensaje = function(){
 				if($scope.paciente){
@@ -21,10 +22,11 @@
 					HelpersService
 						.postMensaje(req)
 						.then(function(res){
-							console.log(res)
+							helper.notify(res);
+							helper.popupClose();
 						})
 						.catch(function(res){
-							console.log(res);
+							helper.notify(res);
 						});
 				}
 			}

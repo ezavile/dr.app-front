@@ -10,6 +10,15 @@
 @import './admin'
 @import './validateForms'
 
+.noInfo
+	display flex
+	flex-direction column
+	background: white
+	padding 2em
+	justify-content center
+	align-items center
+	i
+		margin 1em 0 0
 .icon-home
 	position absolute
 	top 0
@@ -39,6 +48,10 @@
 	color white
 	border-radius 10px
 	cursor pointer
+.Delete-user
+	background: #A53232
+	position absolute
+	right 1em
 body
 	color: #16210b;
 	font-size: 16px;
@@ -230,6 +243,7 @@ option:disabled
 		display inherit
 	&-content
 		padding 1em
+		padding-right 5em
 		color white
 		&--success
 			border-bottom: 1px solid #54b551;
@@ -240,7 +254,7 @@ option:disabled
 		.icon-close
 			position absolute
 			cursor: pointer
-			right 4em
+			right 2em
 @import '../usuario/usuario'
 @import '../paciente/paciente'
 //@import '../doctor/doctor'

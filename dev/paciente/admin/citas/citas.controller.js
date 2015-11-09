@@ -4,9 +4,9 @@
 		.module('drApp.Paciente')
 		.controller('PacienteAdminAgendarController', PacienteAdminAgendarController);
 
-		PacienteAdminAgendarController.$inject = ['$scope', 'HelpersService', 'HelpersFactory', 'PacienteService', 'PacienteFactory'];
+		PacienteAdminAgendarController.$inject = ['$state', '$scope', 'HelpersService', 'HelpersFactory', 'PacienteService', 'PacienteFactory'];
 
-		function PacienteAdminAgendarController($scope, HelpersService, HelpersFactory, PacienteService, PacienteFactory){
+		function PacienteAdminAgendarController($state, $scope, HelpersService, HelpersFactory, PacienteService, PacienteFactory){
 			var helper = HelpersFactory;
 			var paciente = PacienteFactory.getInfo();
 			$scope.citas = [];
@@ -75,6 +75,28 @@
 							console.log(res);
 						})
 				}
+			}
+
+
+
+			$scope.deleteCita = function(cita){
+
+				var req = {
+					"doctor": cita.doctor.doctor,
+					"paciente": paciente.paciente,
+					"fecha": cita.fecha,
+					"hora": cita.hora
+				}
+
+				PacienteService
+					.deleteCita(req)
+					.then(function(res){
+						$state.reload();
+						helper.notify(res);
+					})
+					.catch(function(err){
+						helper.notify(err);
+					});
 			}
 
 		}

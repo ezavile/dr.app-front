@@ -47,7 +47,7 @@
 						}
 					})
 					.catch(function(res){
-						console.log(res);
+						helper.notify(res);
 					});
 			}
 		}

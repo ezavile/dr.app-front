@@ -24,6 +24,23 @@
 
 			return deferred.promise;
 		}
+		
+		function deletePaciente(paciente){
+			var deferred = $q.defer();
+			var paciente = angular.fromJson(paciente);
+
+			$http
+				.delete(URL.URL_API_REST + 'pacientes', {data: paciente})
+				.success(function(res) {
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
 
 		function postComentario(req){
 			var deferred = $q.defer();
@@ -50,7 +67,7 @@
 			$http
 				.post(URL.URL_API_REST + 'pacientes/citas', req)
 				.success(function(res) {
-					//console.log(res);
+					console.log(res);
 					deferred.resolve(res);
 				})
 				.catch(function(res) {
@@ -66,6 +83,24 @@
 
 			$http
 				.put(URL.URL_API_REST + 'pacientes/citas', req)
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
+
+		function deleteCita(req){
+			var deferred = $q.defer();
+			var req = angular.fromJson(req);
+
+			$http
+				.delete(URL.URL_API_REST + 'pacientes/citas', {data: req})
 				.success(function(res) {
 					//console.log(res);
 					deferred.resolve(res);
@@ -132,11 +167,13 @@
 
 		
 		return {
+			deletePaciente: deletePaciente,
 			postPaciente: postPaciente,
 			postComentario: postComentario,
 			postCita: postCita,
 			putCita: putCita,
 			getCitas: getCitas,
+			deleteCita: deleteCita,
 			getMensajes: getMensajes,
 			putPaciente: putPaciente
 		}

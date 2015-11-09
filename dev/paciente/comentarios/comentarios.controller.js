@@ -3,12 +3,13 @@
 		.module('drApp.Paciente')
 		.controller('PacienteComentariosController', PacienteComentariosController);
 
-		PacienteComentariosController.$inject = ['$scope', 'DoctorFactory', 'PacienteFactory', 'PacienteService'];
+		PacienteComentariosController.$inject = ['$scope', 'DoctorFactory', 'PacienteFactory', 'PacienteService', 'HelpersFactory'];
 
-		function PacienteComentariosController($scope, DoctorFactory, PacienteFactory, PacienteService){
+		function PacienteComentariosController($scope, DoctorFactory, PacienteFactory, PacienteService, HelpersFactory){
 			$scope.paciente = PacienteFactory.getInfo();
 			var doctor = DoctorFactory.getDoctor();
 			var doctor_comentarios = DoctorFactory.getComentarios();
+			var helper = HelpersFactory;
 			//scope comentarios coming from verDoc
 			//$scope.comentarios
 			$scope.postComentario = function(){
@@ -28,14 +29,14 @@
 									'nombre':$scope.paciente.nombre,
 									'imgPerfil':$scope.paciente.imgPerfil
 								},
-								'fecha':res.fecha,
-								'comentario':res.comentario
+								'fecha':res.comentario.fecha,
+								'comentario':res.comentario.comentario
 							}
 							doctor_comentarios.unshift(comentario);
 							$scope.comentario = '';
 						})
 						.catch(function(res){
-							console.log(res);
+							helper.notify(res);
 						});
 				}
 			}

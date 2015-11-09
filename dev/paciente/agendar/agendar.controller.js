@@ -60,10 +60,11 @@
 					PacienteService
 						.postCita(req)
 						.then(function(res){
-							console.log(res);
+							helper.notify(res);
+							helper.popupClose();
 						})
 						.catch(function(res){
-							console.log(res);
+							helper.notify(res);
 						});
 				}
 			}

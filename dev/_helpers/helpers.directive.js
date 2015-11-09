@@ -63,6 +63,9 @@
 						var estatus = angular.element(document.getElementById('Notify-content'));
 						estatus.removeClass('Notify-content--error');
 						estatus.removeClass('Notify-content--success');
+						
+						var body = angular.element(document).find('body');
+						body.removeClass('popup-on');
 					 }
 				}
 			}

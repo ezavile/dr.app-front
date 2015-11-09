@@ -1,4 +1,6 @@
 section(class="Admin")
+	article(ng-if="citas.length == 0" class="noInfo")
+		span Aún no has agendado ninguna cita.
 	section(class="Cita" ng-repeat="citas in citasPerMonths")
 		h3(class="Cita-months")
 			span {{citas[0].year}} - {{citas[0].month}}
@@ -7,6 +9,7 @@ section(class="Admin")
 			div(class="Cita-item-estatus" ng-class="{'--confirmada' : cita.estatus == 'CONFIRMADA', '--cancelada' : cita.estatus == 'CANCELADA', '--espera': cita.estatus == 'EN ESPERA'}") {{cita.estatus}}
 			div(class="Cita-item-fecha")
 				span {{cita.fecha | date:'dd/MM/yyyy' : 'UTC'}} - {{cita.hora}}:00
+				span(class="Cita-item-delete" ng-click="deleteCita(cita)") Eliminar
 			header
 				figure(class="Cita-docImgPerfil" style="background-image: url({{cita.doctor.imgPerfil}})" ui-sref="usuario.verDoc({doctor: cita.doctor.doctor})")
 				span(ng-if="cita.estatus!='CANCELADA'" ng-class="{'u-disabled': isDisabledCita(cita.fecha)}" ng-disabled="isDisabledCita(cita.fecha)" class="Cita-item-editar" popup-add="<paciente-cita-update cita='cita' />") Editar
