@@ -13,7 +13,17 @@
 		function notify(){
 			return {
 				restrict: 'E',
-				template: '<article></article>'
+				template: "<article id='Notify' class='Notify'><div id='Notify-content' class='Notify-content'><span id='Notify-content-msj'></span><i class='icon-close' ng-click='close()'></i></div></article>",
+				link: function(scope,elem,attrs){
+					 scope.close = function(){
+						var notify = angular.element(document.getElementById("Notify"));
+						notify.removeClass('Notify--on');
+
+						var estatus = angular.element(document.getElementById('Notify-content'));
+						estatus.removeClass('Notify-content--error');
+						estatus.removeClass('Notify-content--success');
+					 }
+				}
 			}
 		}
 

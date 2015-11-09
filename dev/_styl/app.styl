@@ -207,6 +207,32 @@ option:disabled
 		right 0
 		font-size .9em
 		bottom .5em
+.Notify
+	position fixed
+	width 100%
+	z-index: 300
+	text-align center
+	transition all 0.30s ease-in-out
+	background transparent
+	top 0
+	bottom 0
+	display none
+	&--on
+		background rgba(black, 0.8);
+		display inherit
+	&-content
+		padding 1em
+		color white
+		&--success
+			border-bottom: 1px solid #54b551;
+			background-color: #2B7D00;
+		&--error
+			border-bottom: 1px solid #B30C0C;
+			background-color: #E88888;
+		.icon-close
+			position absolute
+			cursor: pointer
+			right 4em
 @import '../usuario/usuario'
 @import '../paciente/paciente'
 //@import '../doctor/doctor'

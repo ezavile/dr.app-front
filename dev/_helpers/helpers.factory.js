@@ -15,6 +15,17 @@
 			popup[0].remove();
 		};
 
+		helperFactory.notify = function (mensaje) {
+			var notify = angular.element(document.getElementById("Notify"));
+			notify.addClass('Notify--on');
+
+			var estatus = angular.element(document.getElementById('Notify-content'));
+			estatus.addClass('Notify-content Notify-content--' + mensaje.estatus);
+
+			var msj = angular.element(document.getElementById('Notify-content-msj'));
+			msj.text(mensaje.msj);
+		};
+
 		helperFactory.dateYYYYMMDD = function(date){
 			var date = new Date(date);
 			var day = date.getDate();
