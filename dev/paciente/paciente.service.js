@@ -67,7 +67,7 @@
 			$http
 				.post(URL.URL_API_REST + 'pacientes/citas', req)
 				.success(function(res) {
-					console.log(res);
+					//console.log(res);
 					deferred.resolve(res);
 				})
 				.catch(function(res) {

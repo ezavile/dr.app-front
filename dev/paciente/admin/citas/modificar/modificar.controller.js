@@ -82,12 +82,14 @@
 					PacienteService
 						.putCita(req)
 						.then(function(res){
-							$scope.cita.fecha = res.newFecha;
-							$scope.cita.hora = res.newHora;
-							$scope.cita.asunto = res.asunto;
+							$scope.cita.fecha = res.cita.newFecha;
+							$scope.cita.hora = res.cita.newHora;
+							$scope.cita.asunto = res.cita.asunto;
+							helper.notify(res);
+							helper.popupClose();
 						})
 						.catch(function(res){
-							console.log(res);
+							helper.notify(res);
 						});
 				}
 			}

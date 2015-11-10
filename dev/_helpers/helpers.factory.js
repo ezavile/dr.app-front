@@ -48,11 +48,8 @@
 		}
 
 		helperFactory.stringToDate = function(date){
-			var date = new Date(date);
-			var day = date.getDate() + 1;
-			var month = date.getMonth() + 1;
-			var year = date.getFullYear();
-			date = year + '-' + month + '-' + day;
+			var date = date.split('-');
+			date = date[0] + '/' + date[1] + '/' + date[2];
 
 			return new Date(date);
 		}

@@ -69,10 +69,11 @@
 					HelpersService
 						.estatusCita(req)
 						.then(function(res){
-							cita.estatus = res.estatus;
+							$state.reload();
+							helper.notify(res);
 						})
 						.catch(function(res){
-							console.log(res);
+							helper.notify(res);
 						})
 				}
 			}
