@@ -1,4 +1,6 @@
 section(class="Admin-mensajes")
+	article(ng-if="mensajes.length == 0" class="noInfo" style="width:100%;")
+		span Aún no tienes ningún mensaje.
 	section(class="Admin-mensajes-people")
 		article(class="Admin-mensajes-people-person" ng-repeat="pac in pacientes" ng-class="{'u-person-selected': pac.paciente == paciente.paciente}")
 			figure(style="background-image: url({{pac.imgPerfil}})" ng-click="mensajesByPac(pac)")
@@ -8,7 +10,7 @@ section(class="Admin-mensajes")
 			p(class="Admin-mensajes-content-user") {{msj.autor}} | {{msj.fecha | datetime}}
 			p(class="Admin-mensajes-content-desc") {{msj.mensaje}}
 
-	form(class="Admin-mensajes-content-new" name="MensajeForm" ng-submit="MensajeForm.$valid && postMensaje()")
+	form(ng-if="mensajes.length > 0"  class="Admin-mensajes-content-new" name="MensajeForm" ng-submit="MensajeForm.$valid && postMensaje()")
 		div(ng-class="{'u-input-required': MensajeForm.mensaje.$error.required}" style="width: 100%;")
 			textarea(ng-model="mensaje" name="mensaje" required style="width: 100%;")
 		button(ng-class="{'u-disabled': !MensajeForm.$valid}") Enviar

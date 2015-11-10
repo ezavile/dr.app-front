@@ -67,7 +67,7 @@
 					}
 
 					HelpersService
-						.estatusCita(req)
+						.putCita(req)
 						.then(function(res){
 							$state.reload();
 							helper.notify(res);
@@ -89,7 +89,7 @@
 					"hora": cita.hora
 				}
 
-				PacienteService
+				HelpersService
 					.deleteCita(req)
 					.then(function(res){
 						$state.reload();

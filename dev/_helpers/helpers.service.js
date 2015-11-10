@@ -29,12 +29,31 @@
 			return deferred.promise;
 		}
 
-		function estatusCita(req){
+		function putCita(req){
 			var deferred = $q.defer();
 			var req = angular.fromJson(req);
 
 			$http
-				.put(URL.URL_API_REST + 'estatusCita', req)
+				.put(URL.URL_API_REST + 'citas', req)
+				.success(function(res) {
+					//console.log(res);
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
+
+
+		function deleteCita(req){
+			var deferred = $q.defer();
+			var req = angular.fromJson(req);
+
+			$http
+				.delete(URL.URL_API_REST + 'citas', {data: req})
 				.success(function(res) {
 					//console.log(res);
 					deferred.resolve(res);
@@ -68,7 +87,8 @@
 
 		return {
 			upload: upload,
-			estatusCita: estatusCita,
+			putCita: putCita,
+			deleteCita: deleteCita,
 			postMensaje: postMensaje
 		}
 	}

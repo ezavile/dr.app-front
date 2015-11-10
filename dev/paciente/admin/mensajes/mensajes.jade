@@ -1,6 +1,6 @@
 section(class="Admin-mensajes")
-	article(ng-if="mensajes.length == 0" class="noInfo")
-		span Aún no tienes ningun mensaje.
+	article(ng-if="mensajes.length == 0" class="noInfo" style="width:100%;")
+		span Aún no tienes ningún mensaje.
 	section(class="Admin-mensajes-people")
 		article(class="Admin-mensajes-people-person" ng-class="{'u-person-selected': dr.doctor == doctor.doctor}" ng-repeat="dr in doctores")
 			figure(style="background-image: url({{dr.imgPerfil}})" ng-click="mensajesByDoc(dr)")

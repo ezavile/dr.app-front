@@ -95,24 +95,6 @@
 			return deferred.promise;
 		}
 
-		function deleteCita(req){
-			var deferred = $q.defer();
-			var req = angular.fromJson(req);
-
-			$http
-				.delete(URL.URL_API_REST + 'pacientes/citas', {data: req})
-				.success(function(res) {
-					//console.log(res);
-					deferred.resolve(res);
-				})
-				.catch(function(res) {
-					//console.log(res);
-					deferred.reject(res);
-				});
-
-			return deferred.promise;
-		}
-
 		function getCitas(paciente){
 			var deferred = $q.defer();
 
@@ -173,7 +155,6 @@
 			postCita: postCita,
 			putCita: putCita,
 			getCitas: getCitas,
-			deleteCita: deleteCita,
 			getMensajes: getMensajes,
 			putPaciente: putPaciente
 		}

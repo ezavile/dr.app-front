@@ -24,6 +24,23 @@
 			return deferred.promise;
 		}
 
+		function deleteDoctor(doctor){
+			var deferred = $q.defer();
+			var doctor = angular.fromJson(doctor);
+
+			$http
+				.delete(URL.URL_API_REST + 'doctores', {data: doctor})
+				.success(function(res) {
+					deferred.resolve(res);
+				})
+				.catch(function(res) {
+					//console.log(res);
+					deferred.reject(res);
+				});
+
+			return deferred.promise;
+		}
+
 		function postDoctor(doc){
 			var deferred = $q.defer();
 
@@ -178,9 +195,12 @@
 			return deferred.promise;
 		}
 
+
+
 		return {
 			getDoctores: getDoctores,
 			postDoctor: postDoctor,
+			deleteDoctor:deleteDoctor,
 			putDoctor: putDoctor,
 			getEspecialidades: getEspecialidades,
 			doctorById: doctorById,

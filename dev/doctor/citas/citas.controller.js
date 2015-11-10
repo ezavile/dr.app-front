@@ -4,9 +4,9 @@
 		.module('drApp.Doctor')
 		.controller('DoctorCitasController', DoctorCitasController);
 
-		DoctorCitasController.$inject = ['$scope', 'HelpersService', 'HelpersFactory', 'DoctorService', 'DoctorFactory'];
+		DoctorCitasController.$inject = ['$state', '$scope', 'HelpersService', 'HelpersFactory', 'DoctorService', 'DoctorFactory'];
 
-		function DoctorCitasController($scope, HelpersService, HelpersFactory, DoctorService, DoctorFactory){
+		function DoctorCitasController($state, $scope, HelpersService, HelpersFactory, DoctorService, DoctorFactory){
 			var helper = HelpersFactory;
 			var doctor = DoctorFactory.getDoctor();
 			$scope.citas = [];
@@ -67,15 +67,38 @@
 					}
 
 					HelpersService
-						.estatusCita(req)
+						.putCita(req)
 						.then(function(res){
-							cita.estatus = res.estatus;
+							$state.reload();
+							helper.notify(res);
 						})
 						.catch(function(res){
 							console.log(res);
 						})
 				}
 			}
+
+
+			$scope.deleteCita = function(cita){
+
+				var req = {
+					"doctor": doctor.doctor,
+					"paciente": cita.paciente.paciente,
+					"fecha": cita.fecha,
+					"hora": cita.hora
+				}
+
+				HelpersService
+					.deleteCita(req)
+					.then(function(res){
+						$state.reload();
+						helper.notify(res);
+					})
+					.catch(function(err){
+						helper.notify(err);
+					});
+			}
+
 			$scope.confirmarCita = function(cita){
 				if(doctor){
 					var req = {
@@ -87,12 +110,14 @@
 					}
 
 					HelpersService
-						.estatusCita(req)
+						.putCita(req)
 						.then(function(res){
-							cita.estatus = res.estatus;
+							$state.reload();
+							helper.notify(res);
 						})
 						.catch(function(res){
-							console.log(res);
+							$state.reload();
+							helper.notify(res);
 						})
 				}
 			}
