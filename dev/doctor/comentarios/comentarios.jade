@@ -1,6 +1,6 @@
 section(class="Admin")
 	article(ng-if="comentarios.length == 0" class="noInfo")
-		span Aún no tienes ningun comentario.
+		span Aún no tienes ningún comentario.
 	section(class="Cita" ng-repeat="comentarios in comentariosPerMonths")
 		h3(class="Cita-months")
 			span {{comentarios[0].year}} - {{comentarios[0].month}}

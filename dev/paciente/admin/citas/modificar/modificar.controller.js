@@ -85,6 +85,7 @@
 							$scope.cita.fecha = res.cita.newFecha;
 							$scope.cita.hora = res.cita.newHora;
 							$scope.cita.asunto = res.cita.asunto;
+							$scope.cita.estatus = res.cita.estatus;
 							helper.notify(res);
 							helper.popupClose();
 						})
